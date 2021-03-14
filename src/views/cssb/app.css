@@ -1984,7 +1984,7 @@ input::-ms-clear {
   position: relative; }
 
 .header--style-1 {
-  background-color:black; } ñ
+  background-color:black; } 
 
 .header--style-2 {
   background-color:black; }
@@ -5696,6 +5696,9 @@ input::-ms-clear {
   .ah-list > li > ul > li > ul > li > ul > li > a {
     padding: 8px 72px; } }
 
+
+    
+
 @media (min-width: 1025px) {
   .toggle-button {
     display: none; }
@@ -5703,11 +5706,11 @@ input::-ms-clear {
     display: none; }
   .ah-list > li > a:hover {
     color: #ff4500; }
-  .has-dropdown > ul > li:hover {
-    background-color: #fbfbfb; }
-  .has-dropdown:hover > ul {
-    opacity: 1;
-    visibility: visible; }
+    .has-dropdown > ul > li:hover {
+       }
+    .has-dropdown:hover > ul {
+      opacity: 1;
+      visibility: visible; }
   .ah-list > .has-dropdown:hover > ul {
     top: 100%; }
   .has-dropdown .has-dropdown:hover > ul {
@@ -6408,7 +6411,7 @@ input::-ms-clear {
 20.4 jquery.scrollUp
 --------------------------------------------------------------*/
 /* ScrollUp Custom */
-#topScroll {
+#topScrolll {
   right: 24px;
   bottom: 60px;
   width: 50px;
