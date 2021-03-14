@@ -1,19 +1,19 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-}     
-                           
+}  
+          
 const { format } = require('timeago.js');
 const express = require('express');  
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
-const passport = require('passport');  
+const passport = require('passport');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
 const sassMiddleware=require('node-sass-middleware');
- 
-const MongoStore = require('connect-mongo')(session);
+
+const MongoStore = require('connect-mongo').default; 
 // Initializations   <%= session.cart.totalQty %>
 const app = express();
 require('./database');
@@ -28,26 +28,31 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-
-   
-// middlewares
-// app.use(sassMiddleware({
-//   src : './asset/scss',
-//   dest :'./asset/css',
-//   debug : true,
-//   outputStyle : 'extended',
-//   prefix : '/css'
-// }))
-app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.urlencoded({extended: false}));
-app.use(methodOverride('_method'));
+const mongoStore = MongoStore.create({
+  mongoUrl: process.env.MONGODB_URI,
+  collectionName: "sessions",
+});
 app.use(session({
   secret: 'secret',
-  resave: true,
-  saveUninitialized: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection}),
-  cookie: { maxAge: 1 * 60 * 1000 }
+  resave: false,
+  saveUninitialized: false,
+  store: mongoStore,
+  cookie: { maxAge: 180 * 60 * 1000 }
 }));
+ 
+
+// middlewares
+app.use(sassMiddleware({
+  src : './asset/scss',
+  dest :'./asset/css',
+  debug : true,
+  outputStyle : 'extended',
+  prefix : '/css'
+})) 
+app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method')); 
+ 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -56,9 +61,9 @@ app.use(middleware.setFlash);
 app.use(function(req, res, next){
   res.locals.session = req.session;
   //res.locals.sessio = req.sessio;  
-  next();
+  next();  
 })
-
+  
 // Global Variables
 app.use((req, res, next) => {
     app.locals.format = format;
@@ -68,8 +73,8 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
     next();
-  });
-   
+  }); 
+      
 // routes
 app.use(require('./routes'));
 app.use(require('./routes/users'));
