@@ -104,7 +104,7 @@ router.post('/prodseis/new-prodseis',  async (req, res) => {
 
 
 
-router.get('/bombas-packx4-detalles/:id', async (req, res) => {
+router.get('/doblepuente-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -117,7 +117,7 @@ router.get('/bombas-packx4-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
  
-router.get('/bombas-packx4/:page', async (req, res) => {
+router.get('/doblepuente/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

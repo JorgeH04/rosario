@@ -104,7 +104,7 @@ router.post('/prodnueve/new-prodnueve',  async (req, res) => {
 
 
 
-router.get('/hierbas-detalles/:id', async (req, res) => {
+router.get('/aviatorh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -117,7 +117,7 @@ router.get('/hierbas-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/hierbas/:page', async (req, res) => {
+router.get('/aviatorh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 8;

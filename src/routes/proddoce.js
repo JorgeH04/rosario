@@ -104,7 +104,7 @@ router.post('/proddoce/new-proddoce',  async (req, res) => {
 
 
 
-router.get('/carbones-packx12-detalles/:id', async (req, res) => {
+router.get('/lineaferrari-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -117,7 +117,7 @@ router.get('/carbones-packx12-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/carbones-packx12/:page', async (req, res) => {
+router.get('/lineaferrari/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

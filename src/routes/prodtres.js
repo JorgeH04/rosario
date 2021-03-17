@@ -11,7 +11,7 @@ const Cartdolar = require('../models/cartdolar');
 const { isAuthenticated } = require('../helpers/auth');
 
 
-router.get('/lineanatural/:page', async (req, res) => {
+router.get('/erika/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -126,7 +126,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
 
 
 
-router.get('/lineanatural-detalles/:id', async (req, res) => {
+router.get('/erika-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const prodtres = await Prodtres.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});

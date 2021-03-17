@@ -189,7 +189,7 @@ router.get("/searchback", function(req, res){
 
 /////////////////////////////////////////front//////////////////////////////////////////////////
 
-router.get('/sahumos-20a25cm/:page', async (req, res) => {
+router.get('/aviator/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -220,7 +220,7 @@ router.get('/sahumos-20a25cm/:page', async (req, res) => {
 
 
 
-router.get('/sahumos-20a25cm-detalles/:id', async (req, res) => {
+router.get('/aviator-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const produno = await Produno.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
@@ -273,6 +273,7 @@ router.get("/search", function(req, res){
 
 
 router.post("/filtroprod", function(req, res){
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
   let perPage = 8;
   let page = req.params.page || 1;
@@ -281,7 +282,7 @@ router.post("/filtroprod", function(req, res){
 
   if(flrtName!='' ) {
 
-    var flterParameter={ $and:[{ name:flrtName},
+    var flterParameter={ $and:[{ talle:flrtName},
       {$and:[{},{}]}
       ]
        
@@ -303,8 +304,8 @@ router.post("/filtroprod", function(req, res){
       {
         produno: data, 
         current: page,
-        pages: Math.ceil(count / perPage)
-      
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
       });
     });
   });
@@ -317,16 +318,17 @@ router.post("/filtroprod", function(req, res){
 
         
 
-router.post("/filtroprecio", function(req, res){
+router.post("/filtrocolor", function(req, res){
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
   let perPage = 8;
   let page = req.params.page || 1;
 
-  var flrtName = req.body.filtroprice;
+  var flrtName = req.body.filtrocolor;
 
   if(flrtName!='' ) {
 
-    var flterParameter={ $and:[{ filtroprice:flrtName},
+    var flterParameter={ $and:[{ color:flrtName},
       {$and:[{},{}]}
       ]
        
@@ -348,8 +350,9 @@ router.post("/filtroprecio", function(req, res){
       {
         produno: data, 
         current: page,
-        pages: Math.ceil(count / perPage)
-      
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
+
       });
     });
   });

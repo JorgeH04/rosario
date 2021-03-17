@@ -14,7 +14,7 @@ const { isAuthenticated } = require('../helpers/auth');
 
   
 
-  router.get('/otraslineas/:page', async (req, res) => {
+  router.get('/ishape/:page', async (req, res) => {
 
     var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -130,7 +130,7 @@ const { isAuthenticated } = require('../helpers/auth');
 
 
 
-router.get('/otraslineas-detalles/:id', async (req, res) => {
+router.get('/ishape-detalles/:id', async (req, res) => {
 
   const { id } = req.params;
   const prodcinco = await Prodcinco.findById(id);

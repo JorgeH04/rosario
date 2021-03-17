@@ -11,7 +11,7 @@ const Cartdolar = require('../models/cartdolar');
 const { isAuthenticated } = require('../helpers/auth');
 
 
-router.get('/lineapalosanto/:page', async (req, res) => {
+router.get('/clubmaster/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -126,7 +126,7 @@ router.post('/prodcuatro/new-prodcuatro',  async (req, res) => {
 
 
 
-router.get('/lineapalosanto-detalles/:id', async (req, res) => {
+router.get('/clubmaster-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const prodcuatro = await Prodcuatro.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});

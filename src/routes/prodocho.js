@@ -104,7 +104,7 @@ router.post('/prodocho/new-prodocho',  async (req, res) => {
 
 
 
-router.get('/pastillones-detalles/:id', async (req, res) => {
+router.get('/armazones-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -117,7 +117,7 @@ router.get('/pastillones-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/pastillones/:page', async (req, res) => {
+router.get('/armazones/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

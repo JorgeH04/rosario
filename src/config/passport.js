@@ -30,15 +30,15 @@ passport.use(new LocalStrategy({
 
 passport.use(new GoogleStrategy({
  //clientID: process.env.G_clientID,
-  clientID: '754521607662-hv6rsqqe43bui05slna6lptin2usv6a2.apps.googleusercontent.com',
+  clientID: '742837743199-s9c22ufg5p7i5vj1592p1d6f25k54hjl.apps.googleusercontent.com',
  // clientSecret:process.env.G_clientSecret,
- clientSecret:'u6msXCwI0fSd17Tz9ns9hV4g',
-  callbackURL: "https://mahalosagrado.herokuapp.com/auth/google/callback",
+ clientSecret:'T3Z-RtKFt-_zLNHgXCcoislh',
+  callbackURL: "https://pogopopweb.herokuapp.com/auth/google/callback",
   proxy: true ,
   profileFields: ['_id', 'displayName', 'name','email'],
 
 },
-function(token, refreshToken, profile, done) {
+function(token, refreshToken, profile, done) { 
 
   // asynchronous
   process.nextTick(function() {
@@ -89,9 +89,9 @@ passport.use(new facebookStrategy({
   // pull in our app id and secret from our auth.js file
   //clientID        : process.env.F_clientID,
   //clientSecret    : process.env.F_clientSecret,
-  clientID        : '609262959772593',
-  clientSecret    : '2d2720df970131309ee4aee9f69d8db0',
-  callbackURL     : "https://mahalosagrado.herokuapp.com/facebook/callback",
+  clientID        : '228902038713923',
+  clientSecret    : 'b7922533a7e4a4e6c158a20142734f11',
+  callbackURL     : "https://pogopopweb.herokuapp.com/facebook/callback",
   profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)','email']
 
 },// facebook will send back the token and profile

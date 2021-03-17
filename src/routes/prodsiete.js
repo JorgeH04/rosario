@@ -102,7 +102,7 @@ router.post('/prodsiete/new-prodsiete',  async (req, res) => {
 
  ////////////////////////////like////////////////////////
 
- router.get('/likeprodsiete/:id', async (req, res, next) => {
+ router.get('/lineablaze/:id', async (req, res, next) => {
   // let { id } = req.params;
   // const task = await Ofertauno.findById(id);
   const taskk = await Prodsiete.findById(req.params.id);
@@ -114,7 +114,7 @@ router.post('/prodsiete/new-prodsiete',  async (req, res) => {
  
 
 
-router.get('/bombas-packx8-detalles/:id', async (req, res) => {
+router.get('/lineablaze-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -127,7 +127,7 @@ router.get('/bombas-packx8-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/bombas-packx8/:page', async (req, res) => {
+router.get('/lineablaze/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 8;
