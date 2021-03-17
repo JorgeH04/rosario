@@ -33,7 +33,7 @@ passport.use(new GoogleStrategy({
   clientID: '742837743199-s9c22ufg5p7i5vj1592p1d6f25k54hjl.apps.googleusercontent.com',
  // clientSecret:process.env.G_clientSecret,
  clientSecret:'T3Z-RtKFt-_zLNHgXCcoislh',
-  callbackURL: "https://pogopopweb.herokuapp.com/auth/google/callback",
+  callbackURL: "https://www.pogopopgafas.com/google/callback",
   proxy: true ,
   profileFields: ['_id', 'displayName', 'name','email'],
 
@@ -91,7 +91,7 @@ passport.use(new facebookStrategy({
   //clientSecret    : process.env.F_clientSecret,
   clientID        : '228902038713923',
   clientSecret    : 'b7922533a7e4a4e6c158a20142734f11',
-  callbackURL     : "https://pogopopweb.herokuapp.com/facebook/callback",
+  callbackURL     : "https://www.pogopopgafas.com/facebook/callback",
   profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)','email']
 
 },// facebook will send back the token and profile
