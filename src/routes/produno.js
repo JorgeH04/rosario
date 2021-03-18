@@ -483,12 +483,12 @@ router.get('/shopcart', function (req, res, next){
   if(!req.session.cart){
     return res.render('cart/shopcart', {products:null})
   }
-  var cartdolar = new Cartdolar(req.session.cartdolar);
+ // var cartdolar = new Cartdolar(req.session.cartdolar);
   var cart = new Cart(req.session.cart);
   res.render('cart/shopcart', {
     products: cart.generateArray(), 
     totalPrice: cart.totalPrice,
-    totalPriceDolar: cartdolar.totalPrice
+  //  totalPriceDolar: cartdolar.totalPrice
   })
 });
 
@@ -524,7 +524,7 @@ router.get('/addtocardproduno/:id', function(req, res, next){
   });
 });
 
-
+ 
 
 
 
