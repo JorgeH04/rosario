@@ -1,6 +1,6 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-}   
+}      
           
 const { format } = require('timeago.js');
 const express = require('express');  
@@ -12,7 +12,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
 const sassMiddleware=require('node-sass-middleware');
-
+  
 const MongoStore = require('connect-mongo').default; 
 // Initializations   <%= session.cart.totalQty %>
 const app = express();

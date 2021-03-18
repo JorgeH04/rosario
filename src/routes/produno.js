@@ -698,8 +698,8 @@ router.post('/checkout',isAuthenticated,  async (req, res) => {
  
   mercadopago.configure({
  
-       access_token: 'APP_USR-1432163525000875-021620-b94842de8b132c4b4eab5c889a44a1f5-703800763',
-       publicKey: 'APP_USR-79bd0e38-dc74-40f7-85ce-c051895c63dd'
+       access_token: 'APP_USR-2605494813352200-031815-a46d64727de486388f8e224f29452ac7-47919432',
+       publicKey: 'APP_USR-588de8ac-d055-45eb-ad5a-3bf44b2ccae7'
   
     });
   
