@@ -254,13 +254,15 @@
                                       
                             
 											<% produno.forEach(function (produn) { %>
-                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="col-lg-3 col-md-6 col-sm-6">
                                             <div class="product-m">
                                                 <div class="product-m__thumb">
 
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="/aviator-detalles/<%= produn.id %>">
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" 
+                                                       href="/aviator-detalles/<%= produn.id %>">
 
-                                                        <img class="aspect__img" src="<%= produn.image %>" alt=""></a>
+                                                        <img class="aspect__img" src="<%= produn.image %>" alt="">
+                                                    </a>
                                                     <div class="product-m__quick-look">
 
                                                         <a>
@@ -270,15 +272,15 @@
                                                     <div class="product-m__add-cart">
 
 														<a href="/addtocardproduno/<%= produn.id %>"
-														class="btn--e-brand">Add to Cart</a></div>
+														class="btn--e-brand">Agregar al carro</a></div>
                                                 </div>
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
 
-                                                        <a href="shop-side-version-2.html"></a></div>
+                                                        <a ></a></div>
                                                     <div class="product-m__name">
 
-                                                        <a href="product-detail.html"><%= produn.title %></a></div>
+                                                        <a ><%= produn.title %></a></div>
 														<div class="product-m__rating gl-rating-style">
 
                                                         <span class="product-m__review"></span></div>
@@ -292,8 +294,15 @@
 																	<%= produn.description %>
 															</span></div>
                                                         <div class="product-m__wishlist">
+                                                                <a  
+																class="<%= produn.like ? 'fas fa-heart' : 'far fa-heart' %>" 
+																href="/likeproduno/<%= produn.id %>" 
+																id="btn-like"  
+																data-id="<%= produn.id %>"
+																title="Add to Wishlist">
+															</a>
 
-                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
