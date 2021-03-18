@@ -496,7 +496,7 @@ router.get('/shopcart', function (req, res, next){
 router.get('/addtocardproduno/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+  //var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
   Produno.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
@@ -507,7 +507,7 @@ router.get('/addtocardproduno/:id', function(req, res, next){
       cartdolar.add(product, product.id);
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
+ //     req.session.cartdolar = cartdolar;
     //  product.status = !product.status;
   //    await product.save();
   // }else{
@@ -517,7 +517,7 @@ router.get('/addtocardproduno/:id', function(req, res, next){
 
 
     console.log(req.session.cart);
-    console.log(req.session.cartdolar);
+ //   console.log(req.session.cartdolar);
     req.flash('success', 'Producto agregado al carro exitosamente');
     //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
