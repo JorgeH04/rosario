@@ -531,62 +531,50 @@ router.get('/addtocardproduno/:id', function(req, res, next){
 router.get('/reduce/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-
+ 
   cartdolar.reduceByOne(productId);
   cart.reduceByOne(productId);
   req.session.cart = cart;
-  req.session.cartdolar = cartdolar;
-  res.redirect('/shopcart');
+   res.redirect('/shopcart');
 });
 
 router.get('/remove/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-
+ 
   cartdolar.removeItem(productId);
   cart.removeItem(productId);
   req.session.cart = cart;
-  req.session.cartdolar = cartdolar;
-  res.redirect('/shopcart');
+   res.redirect('/shopcart');
 });
 
 
 router.get('/removee/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-
-  cartdolar.removeItem(productId);
-  cart.removeItem(productId);
+ 
+   cart.removeItem(productId);
   req.session.cart = cart;
-  req.session.cartdolar = cartdolar;
-  res.redirect('/prepagar');
+   res.redirect('/prepagar');
 });
     
 
 router.get('/removex/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-
+ 
   cart.removeItem(productId);
   req.session.cart = cart;
-  req.session.cartdolar = cartdolar;
-  res.redirect('/');  
+   res.redirect('/');  
 });
 
 router.get('/sumar/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-
-  cartdolar.sumar(productId);
-  cart.sumar(productId);
+ 
+   cart.sumar(productId);
   req.session.cart = cart;  
-  req.session.cartdolar = cartdolar;  
-  res.redirect('/shopcart');
+   res.redirect('/shopcart');
 });
 
 router.get('/', function (req, res, next){
