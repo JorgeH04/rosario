@@ -1,31 +1,109 @@
 <% include ../partials/_header %>
 
+ 
 
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
 
-<div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3>Digite color y talle</h3>
-          </div>
-          <div class="card-body">
-            <form action="/produno/tallecolor/<%= produno._id %>" method="POST">
-              <input type="hidden" name="_method" value="PUT">
-              <div class="form-group">
-                <input type="text" name="talle" class="form-control" value="<%= produno.tallestock %>"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="color" class="form-control" value="<%= produno.colorstock %>"/>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Save
-                </button>
-              </div>
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
             </form>
-          </div>
         </div>
-      </div>
 
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/produno/tallecolor/<%= produno._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:433px" name="talle">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= produno.talleuno %>"><%= produno.talleuno %></option>
+                                  <option value="<%= produno.talledos %>"><%= produno.talledos %></option>
+                                  <option value="<%= produno.talletres %>"><%= produno.talletres %></option>
+                                  <option value="<%= produno.tallecuatro %>"><%= produno.tallecuatro %></option>
+                                  <option value="XXL">XXL</option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:433px"name="color">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= produno.coloruno %>"><%= produno.coloruno %></option>
+                                  <option value="<%= produno.colordos %>"><%= produno.colordos %></option>
+                                  <option value="<%= produno.colortres %>"><%= produno.colortres %></option>
+                                  <option value="<%= produno.colorcuatro %>"><%= produno.colorcuatro %></option>
+                            </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
+                          </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>
+
+
+
+
+            
 
       <% include ../partials/_footer %>
+      
+
+
       
