@@ -11,7 +11,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
-const sassMiddleware=require('node-sass-middleware');
+const sassMiddleware=require('node-sass-middleware'); 
   
 const MongoStore = require('connect-mongo').default; 
 // Initializations   <%= session.cart.totalQty %>

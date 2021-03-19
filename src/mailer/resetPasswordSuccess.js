@@ -30,7 +30,7 @@ exports.hello = (user) => {
        to: user.email,
        subject: 'Welcome',
        text:  'Hello,\n\n' +
-       'Hola ' + user.email + '  bienvenido a Arte Stelen'
+       'Hola ' + user.email + '  bienvenido a Pogopop'
     }, (err, info) => {
         if (err){
             console.log('Error in sending mail', err);
