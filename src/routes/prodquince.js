@@ -27,6 +27,20 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
     imagetres,
     imagecuatro,
     imagecinco,
+    imageseis,
+    imagesiete,
+    imageocho,
+    imagenueve,
+    imagediez,
+    imageonce,
+    imagedoce,
+    imagetrece,
+    imagecatorce,
+    imagequince,
+    imagedieciseis,
+    imagediecisiete,
+    imagedieciocho,
+    imagediecinueve,
     description,
     filtroprice,
     enstock,
@@ -44,7 +58,7 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
     talleseis,
     oldprice,
     price,
-    dolarprice
+    dolarprice 
         } = req.body;
   const errors = [];
   if (!image) {
@@ -72,6 +86,20 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
       imagetres,
       imagecuatro,
       imagecinco,
+      imageseis,
+      imagesiete,
+      imageocho,
+      imagenueve,
+      imagediez,
+      imageonce,
+      imagedoce,
+      imagetrece,
+      imagecatorce,
+      imagequince,
+      imagedieciseis,
+      imagediecisiete,
+      imagedieciocho,
+      imagediecinueve,
       description,
       filtroprice,
       enstock,
@@ -89,7 +117,7 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
       talleseis,
       oldprice,
       price,
-      dolarprice
+      dolarprice 
     });
     //newNote.user = req.user.id;
     await newNote.save();

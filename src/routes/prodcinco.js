@@ -53,6 +53,20 @@ const { isAuthenticated } = require('../helpers/auth');
       imagetres,
       imagecuatro,
       imagecinco,
+      imageseis,
+      imagesiete,
+      imageocho,
+      imagenueve,
+      imagediez,
+      imageonce,
+      imagedoce,
+      imagetrece,
+      imagecatorce,
+      imagequince,
+      imagedieciseis,
+      imagediecisiete,
+      imagedieciocho,
+      imagediecinueve,
       description,
       filtroprice,
       enstock,
@@ -70,7 +84,7 @@ const { isAuthenticated } = require('../helpers/auth');
       talleseis,
       oldprice,
       price,
-      dolarprice
+      dolarprice 
     } = req.body;
     const errors = [];
     if (!image) {
@@ -98,6 +112,20 @@ const { isAuthenticated } = require('../helpers/auth');
         imagetres,
         imagecuatro,
         imagecinco,
+        imageseis,
+        imagesiete,
+        imageocho,
+        imagenueve,
+        imagediez,
+        imageonce,
+        imagedoce,
+        imagetrece,
+        imagecatorce,
+        imagequince,
+        imagedieciseis,
+        imagediecisiete,
+        imagedieciocho,
+        imagediecinueve,
         description,
         filtroprice,
         enstock,
@@ -115,7 +143,7 @@ const { isAuthenticated } = require('../helpers/auth');
         talleseis,
         oldprice,
         price,
-        dolarprice
+        dolarprice 
       });
       //newNote.user = req.user.id;
       await newNote.save();

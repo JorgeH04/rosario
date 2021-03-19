@@ -24,6 +24,20 @@ router.post('/ofertatres/new-ofertatres',  async (req, res) => {
     imagetres,
     imagecuatro,
     imagecinco,
+    imageseis,
+    imagesiete,
+    imageocho,
+    imagenueve,
+    imagediez,
+    imageonce,
+    imagedoce,
+    imagetrece,
+    imagecatorce,
+    imagequince,
+    imagedieciseis,
+    imagediecisiete,
+    imagedieciocho,
+    imagediecinueve,
     description,
     filtroprice,
     enstock,
@@ -41,7 +55,7 @@ router.post('/ofertatres/new-ofertatres',  async (req, res) => {
     talleseis,
     oldprice,
     price,
-    dolarprice
+    dolarprice 
   } = req.body;
   const errors = [];
   if (!image) {
@@ -69,6 +83,20 @@ router.post('/ofertatres/new-ofertatres',  async (req, res) => {
       imagetres,
       imagecuatro,
       imagecinco,
+      imageseis,
+      imagesiete,
+      imageocho,
+      imagenueve,
+      imagediez,
+      imageonce,
+      imagedoce,
+      imagetrece,
+      imagecatorce,
+      imagequince,
+      imagedieciseis,
+      imagediecisiete,
+      imagedieciocho,
+      imagediecinueve,
       description,
       filtroprice,
       enstock,
@@ -86,7 +114,7 @@ router.post('/ofertatres/new-ofertatres',  async (req, res) => {
       talleseis,
       oldprice,
       price,
-      dolarprice  
+      dolarprice 
     });
     //newNote.user = req.user.id;
     await newNote.save();
