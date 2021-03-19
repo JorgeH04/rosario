@@ -157,7 +157,7 @@ module.exports.forgotSuccess =async function(req,res){
         if (!user) {
             req.flash('error', 'Password reset token is invalid or has expired.');
             return res.redirect('back');
-        }
+        } 
 
         //here it will decrypt thee password
         let hashPassword=await bcrypt.hash(req.body.resetPassword, BCRYPT_SALT_ROUNDS);

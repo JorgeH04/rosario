@@ -238,4 +238,45 @@ let transporter = nodemailer.createTransport({
 });
 
 
+
+router.get('/probarse-en-casa', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('encasa', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+
+
+router.get('/cambios-y-devoluciones', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('devoluciones', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+
+router.get('/beneficios-en-vision', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('beneficiosvision', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+router.get('/diferencia-polarizados', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('polarizados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+
 module.exports = router;
