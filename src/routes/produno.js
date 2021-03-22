@@ -470,6 +470,9 @@ router.get('/likeproduno/:id', async (req, res, next) => {
 
 
 
+
+
+
 // talle y color
 router.get('/produno/tallecolor/:id',  async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
@@ -489,7 +492,7 @@ router.post('/produno/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/produnoredirect/' + id);
+  res.redirect('/aviator-detalles/' + id);
 });
 
 
@@ -554,7 +557,7 @@ router.get('/addtocardproduno/:id', function(req, res, next){
 
 
   //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+ //     cartdolar.add(product, product.id);
       cart.add(product, product.id);
       req.session.cart = cart;
  //     req.session.cartdolar = cartdolar;
@@ -591,7 +594,7 @@ router.get('/remove/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
  
-  cartdolar.removeItem(productId);
+ // cartdolar.removeItem(productId);
   cart.removeItem(productId);
   req.session.cart = cart;
    res.redirect('/shopcart');

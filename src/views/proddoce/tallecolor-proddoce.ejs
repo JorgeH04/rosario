@@ -1,31 +1,119 @@
 <% include ../partials/_header %>
 
+ 
 
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
 
-<div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3>Digite color y talle</h3>
-          </div>
-          <div class="card-body">
-            <form action="/produno/tallecolor/<%= produno._id %>" method="POST">
-              <input type="hidden" name="_method" value="PUT">
-              <div class="form-group">
-                <input type="text" name="talle" class="form-control" value="<%= produno.tallestock %>"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="color" class="form-control" value="<%= produno.colorstock %>"/>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Save
-                </button>
-              </div>
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
             </form>
-          </div>
         </div>
-      </div>
 
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/proddoce/tallecolor/<%= proddoce._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:300px" name="talleuno">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= proddoce.talleuno %>"><%= proddoce.talleuno %></option>
+                                  <option value="<%= proddoce.talledos %>"><%= proddoce.talledos %></option>
+                                  <option value="<%= proddoce.talletres %>"><%= proddoce.talletres %></option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:300px; height:52px"name="coloruno">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= proddoce.coloruno %>"><%= proddoce.coloruno %></option>
+                                  <option value="<%= proddoce.colordos %>"><%= proddoce.colordos %></option>
+                                  <option value="<%= proddoce.colortres %>"><%= proddoce.colortres %></option>
+                                  <option value="<%= proddoce.colorcuatro %>"><%= proddoce.colorcuatro %></option>
+                                  <option value="<%= proddoce.colorcinco %>"><%= proddoce.colorcinco %></option>
+                                  <option value="<%= proddoce.colorseis %>"><%= proddoce.colorseis %></option>
+                                  <option value="<%= proddoce.colorsiete %>"><%= proddoce.colorsiete %></option>
+                                  <option value="<%= proddoce.colorocho %>"><%= proddoce.colorocho %></option>
+                                  <option value="<%= proddoce.colornueve %>"><%= proddoce.colornueve %></option>
+                                  <option value="<%= proddoce.colordiez %>"><%= proddoce.colordiez %></option>
+                                  <option value="<%= proddoce.coloronce %>"><%= proddoce.coloronce %></option>
+                                  <option value="<%= proddoce.colordoce %>"><%= proddoce.colordoce %></option>
+                                  <option value="<%= proddoce.colortrece %>"><%= proddoce.colortrece %></option>
+                                  <option value="<%= proddoce.colorcatorce %>"><%= proddoce.colorcatorce %></option>
+                                  <option value="<%= proddoce.colorquince %>"><%= proddoce.colorquince %></option>
+                                  <option value="<%= proddoce.colordieciseis %>"><%= proddoce.colordieciseis %></option>
+                                  <option value="<%= proddoce.colordiecisiete %>"><%= proddoce.colordiecisiete %></option>
+                                  <option value="<%= proddoce.colordieciocho %>"><%= proddoce.colordieciocho %></option>
+                                  <option value="<%= proddoce.colordiecinueve %>"><%= proddoce.colordiecinueve %></option>
+                             </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
+                          </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>
+
+
+
+
+            
 
       <% include ../partials/_footer %>
       

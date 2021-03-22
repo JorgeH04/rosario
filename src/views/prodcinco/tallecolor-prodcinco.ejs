@@ -1,30 +1,119 @@
 <% include ../partials/_header %>
 
+ 
 
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
 
-<div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3>Digite color y talle</h3>
-          </div>
-          <div class="card-body">
-            <form action="/prodcinco/tallecolor/<%= prodcinco._id %>" method="POST">
-              <input type="hidden" name="_method" value="PUT">
-              <div class="form-group">
-                <input type="text" name="talle" class="form-control" value="<%= prodcinco.tallestock %>"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="color" class="form-control" value="<%= prodcinco.colorstock %>"/>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Save
-                </button>
-              </div>
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
             </form>
-          </div>
         </div>
-      </div>
 
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/prodcinco/tallecolor/<%= prodcinco._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:300px" name="talleuno">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= prodcinco.talleuno %>"><%= prodcinco.talleuno %></option>
+                                  <option value="<%= prodcinco.talledos %>"><%= prodcinco.talledos %></option>
+                                  <option value="<%= prodcinco.talletres %>"><%= prodcinco.talletres %></option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:300px; height:52px"name="coloruno">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= prodcinco.coloruno %>"><%= prodcinco.coloruno %></option>
+                                  <option value="<%= prodcinco.colordos %>"><%= prodcinco.colordos %></option>
+                                  <option value="<%= prodcinco.colortres %>"><%= prodcinco.colortres %></option>
+                                  <option value="<%= prodcinco.colorcuatro %>"><%= prodcinco.colorcuatro %></option>
+                                  <option value="<%= prodcinco.colorcinco %>"><%= prodcinco.colorcinco %></option>
+                                  <option value="<%= prodcinco.colorseis %>"><%= prodcinco.colorseis %></option>
+                                  <option value="<%= prodcinco.colorsiete %>"><%= prodcinco.colorsiete %></option>
+                                  <option value="<%= prodcinco.colorocho %>"><%= prodcinco.colorocho %></option>
+                                  <option value="<%= prodcinco.colornueve %>"><%= prodcinco.colornueve %></option>
+                                  <option value="<%= prodcinco.colordiez %>"><%= prodcinco.colordiez %></option>
+                                  <option value="<%= prodcinco.coloronce %>"><%= prodcinco.coloronce %></option>
+                                  <option value="<%= prodcinco.colordoce %>"><%= prodcinco.colordoce %></option>
+                                  <option value="<%= prodcinco.colortrece %>"><%= prodcinco.colortrece %></option>
+                                  <option value="<%= prodcinco.colorcatorce %>"><%= prodcinco.colorcatorce %></option>
+                                  <option value="<%= prodcinco.colorquince %>"><%= prodcinco.colorquince %></option>
+                                  <option value="<%= prodcinco.colordieciseis %>"><%= prodcinco.colordieciseis %></option>
+                                  <option value="<%= prodcinco.colordiecisiete %>"><%= prodcinco.colordiecisiete %></option>
+                                  <option value="<%= prodcinco.colordieciocho %>"><%= prodcinco.colordieciocho %></option>
+                                  <option value="<%= prodcinco.colordiecinueve %>"><%= prodcinco.colordiecinueve %></option>
+                             </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
+                          </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>
+
+
+
+
+            
 
       <% include ../partials/_footer %>
+      

@@ -1,31 +1,119 @@
 <% include ../partials/_header %>
 
+ 
 
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
 
-<div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3>Digite color y talle</h3>
-          </div>
-          <div class="card-body">
-            <form action="/ofertauno/tallecolor/<%= ofertauno._id %>" method="POST">
-              <input type="hidden" name="_method" value="PUT">
-              <div class="form-group">
-                <input type="text" name="talle" class="form-control" value="<%= ofertauno.tallestock %>"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="color" class="form-control" value="<%= ofertauno.colorstock %>"/>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Save
-                </button>
-              </div>
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
             </form>
-          </div>
         </div>
-      </div>
 
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/ofertauno/tallecolor/<%= ofertauno._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:300px" name="talleuno">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= ofertauno.talleuno %>"><%= ofertauno.talleuno %></option>
+                                  <option value="<%= ofertauno.talledos %>"><%= ofertauno.talledos %></option>
+                                  <option value="<%= ofertauno.talletres %>"><%= ofertauno.talletres %></option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:300px; height:52px"name="coloruno">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= ofertauno.coloruno %>"><%= ofertauno.coloruno %></option>
+                                  <option value="<%= ofertauno.colordos %>"><%= ofertauno.colordos %></option>
+                                  <option value="<%= ofertauno.colortres %>"><%= ofertauno.colortres %></option>
+                                  <option value="<%= ofertauno.colorcuatro %>"><%= ofertauno.colorcuatro %></option>
+                                  <option value="<%= ofertauno.colorcinco %>"><%= ofertauno.colorcinco %></option>
+                                  <option value="<%= ofertauno.colorseis %>"><%= ofertauno.colorseis %></option>
+                                  <option value="<%= ofertauno.colorsiete %>"><%= ofertauno.colorsiete %></option>
+                                  <option value="<%= ofertauno.colorocho %>"><%= ofertauno.colorocho %></option>
+                                  <option value="<%= ofertauno.colornueve %>"><%= ofertauno.colornueve %></option>
+                                  <option value="<%= ofertauno.colordiez %>"><%= ofertauno.colordiez %></option>
+                                  <option value="<%= ofertauno.coloronce %>"><%= ofertauno.coloronce %></option>
+                                  <option value="<%= ofertauno.colordoce %>"><%= ofertauno.colordoce %></option>
+                                  <option value="<%= ofertauno.colortrece %>"><%= ofertauno.colortrece %></option>
+                                  <option value="<%= ofertauno.colorcatorce %>"><%= ofertauno.colorcatorce %></option>
+                                  <option value="<%= ofertauno.colorquince %>"><%= ofertauno.colorquince %></option>
+                                  <option value="<%= ofertauno.colordieciseis %>"><%= ofertauno.colordieciseis %></option>
+                                  <option value="<%= ofertauno.colordiecisiete %>"><%= ofertauno.colordiecisiete %></option>
+                                  <option value="<%= ofertauno.colordieciocho %>"><%= ofertauno.colordieciocho %></option>
+                                  <option value="<%= ofertauno.colordiecinueve %>"><%= ofertauno.colordiecinueve %></option>
+                             </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
+                          </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>
+
+
+
+
+            
 
       <% include ../partials/_footer %>
       

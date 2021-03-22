@@ -1,34 +1,106 @@
 <% include ../partials/_header %>
 
+ 
+
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
+
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
+            </form>
+        </div>
+
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
 
 
-<div id="content ">
-  <div class="product-page container mt-5">
-      
-            <div class="single-inputs row">
-              <div class="col-md-6">
-                <form action="/produno/tallecolor/<%= produno._id %>" method="POST">
-                   <select class="select" name="talle">
-                    <option value="Select Size">Elegir talle</option>
-                    <option value="<%= produno.talleuno %>"><%= produno.talleuno %></option>
-                    <option value="<%= produno.talledos %>"><%= produno.talledos %></option>
-                    <option value="<%= produno.talletres %>"><%= produno.talletres %></option>
-                    <option value="<%= produno.tallecuatro %>"><%= produno.tallecuatro %></option>
-                    <option value="XXL">XXL</option>
-                  </select>
-              </div>
-              <div class="col-md-6">
-                   <select class="select" name="color">
-                   <option value="Select Color">Elegir Color</option>
-                    <option value="<%= produno.coloruno %>"><%= produno.coloruno %></option>
-                    <option value="<%= produno.colordos %>"><%= produno.colordos %></option>
-                    <option value="<%= produno.colortres %>"><%= produno.colortres %></option>
-                    <option value="<%= produno.colorcuatro %>"><%= produno.colorcuatro %></option>
-                </select>
-                              </div>
-                              <button class="btn btn-success">Enviar</button>
-                              </form>
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/prodnueve/tallecolor/<%= prodnueve._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:300px" name="talleuno">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= prodnueve.talleuno %>"><%= prodnueve.talleuno %></option>
+                                  <option value="<%= prodnueve.talledos %>"><%= prodnueve.talledos %></option>
+                                  <option value="<%= prodnueve.talletres %>"><%= prodnueve.talletres %></option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:300px; height:52px"name="coloruno">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= prodnueve.coloruno %>"><%= prodnueve.coloruno %></option>
+                                  <option value="<%= prodnueve.colordos %>"><%= prodnueve.colordos %></option>
+                                  <option value="<%= prodnueve.colortres %>"><%= prodnueve.colortres %></option>
+                                  <option value="<%= prodnueve.colorcuatro %>"><%= prodnueve.colorcuatro %></option>
+                                  <option value="<%= prodnueve.colorcinco %>"><%= prodnueve.colorcinco %></option>
+                                  <option value="<%= prodnueve.colorseis %>"><%= prodnueve.colorseis %></option>
+                                  <option value="<%= prodnueve.colorsiete %>"><%= prodnueve.colorsiete %></option>
+                                  <option value="<%= prodnueve.colorocho %>"><%= prodnueve.colorocho %></option>
+                                  <option value="<%= prodnueve.colornueve %>"><%= prodnueve.colornueve %></option>
+                                  <option value="<%= prodnueve.colordiez %>"><%= prodnueve.colordiez %></option>
+                                  <option value="<%= prodnueve.coloronce %>"><%= prodnueve.coloronce %></option>
+                                  <option value="<%= prodnueve.colordoce %>"><%= prodnueve.colordoce %></option>
+                                  <option value="<%= prodnueve.colortrece %>"><%= prodnueve.colortrece %></option>
+                                  <option value="<%= prodnueve.colorcatorce %>"><%= prodnueve.colorcatorce %></option>
+                                  <option value="<%= prodnueve.colorquince %>"><%= prodnueve.colorquince %></option>
+                                  <option value="<%= prodnueve.colordieciseis %>"><%= prodnueve.colordieciseis %></option>
+                                  <option value="<%= prodnueve.colordiecisiete %>"><%= prodnueve.colordiecisiete %></option>
+                                  <option value="<%= prodnueve.colordieciocho %>"><%= prodnueve.colordieciocho %></option>
+                                  <option value="<%= prodnueve.colordiecinueve %>"><%= prodnueve.colordiecinueve %></option>
+                             </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
                           </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
             <br>
             <br>
             <br>
@@ -37,6 +109,10 @@
             <br>
   </div>
 </div>
+
+
+
+
             
 
       <% include ../partials/_footer %>

@@ -1,31 +1,119 @@
 <% include ../partials/_header %>
 
+ 
 
+<div class="container mt-5" style="margin-top:20px" >
+    <div class=" row">
 
-<div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3>Digite color y talle</h3>
-          </div>
-          <div class="card-body">
-            <form action="/ofertatres/tallecolor/<%= ofertatres._id %>" method="POST">
-              <input type="hidden" name="_method" value="PUT">
-              <div class="form-group">
-                <input type="text" name="talle" class="form-control" value="<%= ofertatres.tallestock %>"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="color" class="form-control" value="<%= ofertatres.colorstock %>"/>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Save
-                </button>
-              </div>
+<div class="tab-pane" id="pd-tag">
+    <div class="pd-tab__tag">
+        <h2 class="u-s-m-b-15"></h2>
+        <div class="u-s-m-b-15">
+            <form>
+
+ 
+                <h2  type="submit"><u>Elegir talle y color</u></h2>
             </form>
-          </div>
         </div>
-      </div>
 
+        <span class="gl-text"></span>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div class="u-s-m-b-15">
+      <div class="u-s-m-b-15">
+
+          <div class="container">
+              <div class=" row">
+                  <div class="col-md-6">
+                  <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                         <div class="u-s-m-b-15">
+                           <form action="/ofertatres/tallecolor/<%= ofertatres._id %>" method="POST">
+                             <select class="input-text input-text--primary-style" style="width:300px" name="talleuno">
+                                  <option value="Select Size">Elegir talle</option>
+                                  <option value="<%= ofertatres.talleuno %>"><%= ofertatres.talleuno %></option>
+                                  <option value="<%= ofertatres.talledos %>"><%= ofertatres.talledos %></option>
+                                  <option value="<%= ofertatres.talletres %>"><%= ofertatres.talletres %></option>
+                             </select>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+            
+           
+
+
+                <div class="col-md-6"> 
+                    <div class="tab-pane" id="pd-tag">
+                      <div class="pd-tab__tag">
+                        <div class="u-s-m-b-15">
+                            <select class="input-text input-text--primary-style" style="width:300px; height:52px"name="coloruno">
+                                  <option value="Select Color">Elegir Color</option>
+                                  <option value="<%= ofertatres.coloruno %>"><%= ofertatres.coloruno %></option>
+                                  <option value="<%= ofertatres.colordos %>"><%= ofertatres.colordos %></option>
+                                  <option value="<%= ofertatres.colortres %>"><%= ofertatres.colortres %></option>
+                                  <option value="<%= ofertatres.colorcuatro %>"><%= ofertatres.colorcuatro %></option>
+                                  <option value="<%= ofertatres.colorcinco %>"><%= ofertatres.colorcinco %></option>
+                                  <option value="<%= ofertatres.colorseis %>"><%= ofertatres.colorseis %></option>
+                                  <option value="<%= ofertatres.colorsiete %>"><%= ofertatres.colorsiete %></option>
+                                  <option value="<%= ofertatres.colorocho %>"><%= ofertatres.colorocho %></option>
+                                  <option value="<%= ofertatres.colornueve %>"><%= ofertatres.colornueve %></option>
+                                  <option value="<%= ofertatres.colordiez %>"><%= ofertatres.colordiez %></option>
+                                  <option value="<%= ofertatres.coloronce %>"><%= ofertatres.coloronce %></option>
+                                  <option value="<%= ofertatres.colordoce %>"><%= ofertatres.colordoce %></option>
+                                  <option value="<%= ofertatres.colortrece %>"><%= ofertatres.colortrece %></option>
+                                  <option value="<%= ofertatres.colorcatorce %>"><%= ofertatres.colorcatorce %></option>
+                                  <option value="<%= ofertatres.colorquince %>"><%= ofertatres.colorquince %></option>
+                                  <option value="<%= ofertatres.colordieciseis %>"><%= ofertatres.colordieciseis %></option>
+                                  <option value="<%= ofertatres.colordiecisiete %>"><%= ofertatres.colordiecisiete %></option>
+                                  <option value="<%= ofertatres.colordieciocho %>"><%= ofertatres.colordieciocho %></option>
+                                  <option value="<%= ofertatres.colordiecinueve %>"><%= ofertatres.colordiecinueve %></option>
+                             </select>
+                         </div>
+                        </div>
+                      </div>
+
+                         
+                            </div>
+                          </div>
+
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <div class="container">
+                    <div class=" row">
+                        <div class="col-md-6">
+                            <button class="btn btn--e-brand-b-2 mt-5">Enviar</button>
+
+                          </div>
+                        </div>
+                       </div>
+
+                </form>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>
+
+
+
+
+            
 
       <% include ../partials/_footer %>
       
