@@ -26,12 +26,31 @@ const NoteSchema = new Schema({
   description: String,
   filtroprice: String,
   enstock:String,
-  color: String,
-  colorstock: String,
-  talle: String,
-  tallestock: String,
-  oldprice: Number,
+  coloruno: String,
+  colordos: String,
+  colortres: String,
+  colorcuatro: String,
+  colorcinco: String,
+  colorseis: String,
+  colorsiete: String,
+  colorocho: String,
+  colornueve: String,
+  colordiez: String,
+  coloronce: String,
+  colordoce: String,
+  colortrece: String,
+  colorcatorce: String,
+  colorquince: String,
+  colordieciseis: String,
+  colordiecisiete: String,
+  colordieciocho: String,
+  colordiecinueve: String,
+  talleuno: String,
+  talledos: String,
+  talletres: String,
+  oldprice: Number, 
   price: Number,
+  dolarprice: Number,
   amount: Number,
   like: {
     type: Boolean,
@@ -41,7 +60,7 @@ const NoteSchema = new Schema({
   status: {
     type: Boolean,
     default: false
-  },
+  } 
 
 });
 
