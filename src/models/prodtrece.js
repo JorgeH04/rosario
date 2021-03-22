@@ -10,7 +10,7 @@ const NoteSchema = new Schema({
   imagecuatro: String,
   imagecinco: String,
   imageseis: String,
-  imagesiete: String,
+  imagesiete: String, 
   imageocho: String,
   imagenueve: String,
   imagediez: String,
