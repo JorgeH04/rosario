@@ -239,7 +239,7 @@ router.get("/searchback", function(req, res){
 
 /////////////////////////////////////////front//////////////////////////////////////////////////
 
-router.get('/aviator/:page', async (req, res) => {
+router.get('/aviador/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -270,7 +270,7 @@ router.get('/aviator/:page', async (req, res) => {
 
 
 
-router.get('/aviator-detalles/:id', async (req, res) => {
+router.get('/aviador-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const produno = await Produno.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});

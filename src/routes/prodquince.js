@@ -154,7 +154,7 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
 
 
 
-router.get('/clubmasterh-detalles/:id', async (req, res) => {
+router.get('/square-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -167,7 +167,7 @@ router.get('/clubmasterh-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/clubmasterh/:page', async (req, res) => {
+router.get('/square/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

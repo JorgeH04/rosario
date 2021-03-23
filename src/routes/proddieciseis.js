@@ -162,7 +162,7 @@ router.get('/likeproddieciseis/:id', async (req, res, next) => {
 
 
 
-router.get('/armazonesh-detalles/:id', async (req, res) => {
+router.get('/wayfarer-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -175,7 +175,7 @@ router.get('/armazonesh-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/armazonesh/:page', async (req, res) => {
+router.get('/wayfarer/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

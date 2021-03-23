@@ -154,7 +154,7 @@ router.post('/proddiez/new-proddiez',  async (req, res) => {
 
 
 
-router.get('/wayfarer-detalles/:id', async (req, res) => {
+router.get('/general-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -167,7 +167,7 @@ router.get('/wayfarer-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
     
-router.get('/wayfarer/:page', async (req, res) => {
+router.get('/general/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

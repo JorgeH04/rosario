@@ -154,7 +154,7 @@ router.post('/prodtrece/new-prodtrece',  async (req, res) => {
 
 
 
-router.get('/envolventes-detalles/:id', async (req, res) => {
+router.get('/jackieooh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -167,7 +167,7 @@ router.get('/envolventes-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/envolventes/:page', async (req, res) => {
+router.get('/jackieooh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

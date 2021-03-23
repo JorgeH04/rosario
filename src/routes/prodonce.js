@@ -154,7 +154,7 @@ router.post('/prodonce/new-prodonce',  async (req, res) => {
 
 
 
-router.get('/justin-detalles/:id', async (req, res) => {
+router.get('/highstreet-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -167,7 +167,7 @@ router.get('/justin-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/justin/:page', async (req, res) => {
+router.get('/highstreet/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;
