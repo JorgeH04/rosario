@@ -63,4 +63,4 @@ const NoteSchema = new Schema({
   } 
 });
 
-module.exports = mongoose.model('Proddieocho', NoteSchema);
+module.exports = mongoose.model('Proddieciocho', NoteSchema);

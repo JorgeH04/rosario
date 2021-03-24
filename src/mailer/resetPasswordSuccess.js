@@ -29,17 +29,9 @@ exports.hello = (user) => {
        from: 'artstelen@gmail.com',
        to: user.email,
        subject: 'Welcome',
-       attachments: [
-        {
-            filename: 'somefile.pdf',   
-            path: './somefile.pdf',                                      
-            contentType: 'application/pdf'
-        }],
-
        text:  'Hello,\n\n' +
-       'Hola ' + user.email + '  bienvenido a Pogopop'
-       }, 
-      
+       'Hola ' + user.email + '  bienvenido a Pogopop',       
+       },       
        (err, info) => {
         if (err){
             console.log('Error in sending mail', err);
@@ -77,46 +69,7 @@ exports.pago = ( order, cart) => {
 }
 
 
-
-// attachments: [
-//     {
-//         filename: 'fileName.pdf',                                         
-//         contentType: 'application/pdf'
-//     }]
-
-
-
-
-
-// this is another way of exporting a method
-exports.pagopdf = ( order, cart) => {
-    //this is the message body for mail when password change succcessfully
-    nodeMailer.transporter.sendMail({
-       from: 'passwordreset@demo.com',
-       to: order.emaill,
-       subject: 'Registro de compra',
-       text:  'Hola,\n\n' +
-      // 'Hola ' + order.name + 
-       'hemos registrado tu compra por un monto de: $' + order.totalcart + '. Nos pondremos en contacto con usted en la brevedad. El detalle de su compra lo puede encontrar en su cuenta en la sección de su perfil' 
-    }, (err, info) => {
-        if (err){
-            console.log('Error in sending mail', err);
-            return;
-        }
-        attachments: [
-            {
-                filename: 'fileName.pdf',   
-                path: 'C:/Users/Username/Desktop/somefile.pdf',                                      
-                contentType: 'application/pdf'
-            }]
-        req.flash('info', 'Le ha sido enviado un email a ' + order.emaill + ' ya que hemos registrado su pedido');
-        console.log('Message sent', info);
-        return;
-    });
-}
-
-
-
+ 
 
 
 
@@ -134,7 +87,18 @@ exports.venta = ( user) => {
        to: 'jhessle04@gmail.com',
        subject: 'Venta',
        text:  'Hola,\n\n' +
-       'Alguien llenó un formulario de venta, fijate en la sección de pedidos de qué se trata'
+       'Alguien llenó un formulario de venta, fijate en la sección de pedidos de qué se trata',
+       attachments: [
+           {
+            filename: 'somefile.pdf',   
+           // path: path.join(__dirname, './somefile.pdf'),      
+            path: __dirname + "/somefile.pdf",                            
+            contentType: 'application/pdf'
+           },
+        ],
+       html: '<b>Hello world attachment test HTML</b>', 
+     
+         
     }, (err, info) => {
         if (err){
             console.log('Error in sending mail', err);

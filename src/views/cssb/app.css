@@ -4024,9 +4024,9 @@ input::-ms-clear {
   display: block;
   width: 100%; }
 
-.blog-m__element {
-  width: 33.33%;
-  padding: 20px 10px; }
+  .blog-m__element {
+    width: 33.33%;
+    padding: 20px 10px;}
 
 .bp-mini {
   background-color: #ffffff;
@@ -4083,20 +4083,6 @@ input::-ms-clear {
     font-size: 12px;
     color: #7f7f7f; }
 
-.bp-mini--img .bp-mini__thumbnail {
-  overflow: hidden; }
-  .bp-mini--img .bp-mini__thumbnail img {
-    transition: -webkit-transform 0.6s ease-in-out;
-    transition: transform 0.6s ease-in-out;
-    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-
-.bp-mini--img:hover .bp-mini__thumbnail {
-  overflow: hidden; }
-  .bp-mini--img:hover .bp-mini__thumbnail img {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1); }
 
 .detail-post {
   max-width: 740px;

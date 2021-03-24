@@ -11,6 +11,50 @@ const Cartdolar = require('../models/cartdolar');
 // Helpers
 const { isAuthenticated } = require('../helpers/auth');
 
+
+
+
+
+
+router.get('/aviadorh/:page', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : 0);
+
+  let perPage = 8;
+  let page = req.params.page || 1;
+
+  Proddieciocho
+  .find({}) // finding all documents
+  .sort({ timestamp: -1 })
+  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+  .limit(perPage) // output just 9 items
+  .exec((err, proddieciocho) => {
+    Proddieciocho.countDocuments((err, count) => { // count to calculate the number of pages
+      if (err) return next(err);
+      res.render('proddieciocho/proddieciocho', {
+        proddieciocho,
+        current: page,
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
+      });
+    });
+  });
+});
+
+
+
+
+router.get('/aviadorh-detalles/:id', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : 0);
+
+  const { id } = req.params;
+  const proddieciocho = await Proddieciocho.findById(id);
+  res.render('proddieciocho/proddieciochoredirect', {
+    proddieciocho,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+////////////////////////////////////////////////////////////////// 
+
   
 
 
@@ -153,43 +197,6 @@ router.post('/proddieciocho/new-proddieciocho',  async (req, res) => {
 
 
 
-
-router.get('/portaincienso-detalles/:id', async (req, res) => {
-  var cart = new Cart(req.session.cart ? req.session.cart : 0);
-
-  const { id } = req.params;
-  const proddieciocho = await Proddieciocho.findById(id);
-  res.render('proddieciocho/proddieciochoredirect', {
-    proddieciocho,
-    products: cart.generateArray(), totalPrice: cart.totalPrice
-  });
-});
-//////////////////////////////////////////////////////////////////
-
-
-router.get('/portaincienso/:page', async (req, res) => {
-  var cart = new Cart(req.session.cart ? req.session.cart : 0);
-
-   let perPage = 8;
-  let page = req.params.page || 1;
-
-  Proddieciocho
-  .find({}) // finding all documents
-  .sort({ timestamp: -1 })
-  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
-  .limit(perPage) // output just 9 items
-  .exec((err, proddieciocho) => {
-    Proddieciocho.countDocuments((err, count) => { // count to calculate the number of pages
-      if (err) return next(err);
-      res.render('proddieciocho/proddieciocho', {
-        proddieciocho,
-        current: page,
-        pages: Math.ceil(count / perPage),
-        products: cart.generateArray(), totalPrice: cart.totalPrice
-      });
-    });
-  });
-});
 
 
 

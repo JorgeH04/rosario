@@ -279,4 +279,134 @@ router.get('/diferencia-polarizados', async (req, res) => {
 });
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+router.get('/lentes-adecuados', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+
+
+
+router.get('/lentes-adecuados-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('lentesprobador/mujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+ 
+
+
+router.get('/lentes-adecuados-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/hombre', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+
+
+router.get('/casual-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/hombre', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/clasico-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/moda-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+
+
+
+
+
+router.get('/casual-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/clasico-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/moda-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
 module.exports = router;

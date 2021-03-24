@@ -676,6 +676,8 @@ router.post('/confirmacion', isAuthenticated, async (req, res, next)=>{
   });
   console.log(order)
   await order.save();
+  venta.venta(order);
+
   req.flash('success_msg', 'Note Added Successfully');
   res.redirect('/mediodepago');
   

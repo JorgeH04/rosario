@@ -40,6 +40,21 @@ router.get('/clubround/:page', async (req, res) => {
 
 
 
+router.get('/clubround-detalles/:id', async (req, res) => {
+  const { id } = req.params;
+  const prodcuatro = await Prodcuatro.findById(id);
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('prodcuatro/prodcuatroredirect', {
+    prodcuatro,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
 
 router.post('/prodcuatro/new-prodcuatro',  async (req, res) => {
   const { 
@@ -176,17 +191,7 @@ router.post('/prodcuatro/new-prodcuatro',  async (req, res) => {
 
 
 
-router.get('/clubround-detalles/:id', async (req, res) => {
-  const { id } = req.params;
-  const prodcuatro = await Prodcuatro.findById(id);
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  res.render('prodcuatro/prodcuatroredirect', {
-    prodcuatro,
-    products: cart.generateArray(), totalPrice: cart.totalPrice
-
-  });
-});
 
 
 
