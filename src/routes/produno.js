@@ -36,6 +36,56 @@ const SECRET_KEY = 'sk_test_rCp23dn4fDasEqfGiVkhHvii00SyEkd4GS'
 
 
 
+
+
+/////////////////////////////////////////front//////////////////////////////////////////////////
+
+router.get('/aviador/:page', async (req, res) => {
+
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  let perPage = 8;
+  let page = req.params.page || 1;
+
+  Produno 
+  .find({}) // finding all documents
+  .sort( {timestamp: -1})
+  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+  .limit(perPage) // output just 9 items
+  .exec((err, produno) => {
+    Produno.countDocuments((err, count) => { // count to calculate the number of pages
+      if (err) return next(err);
+      res.render('produno/produno', {
+        produno,
+        current: page,
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
+
+      });
+    });
+  });
+});
+
+
+
+
+
+
+router.get('/aviador-detalles/:id', async (req, res) => {
+  const { id } = req.params;
+  const produno = await Produno.findById(id);
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('produno/produnoredirect', {
+    produno,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
 ////////////////////////////////////////back/////////////////////////////////////////////////////7
 
 router.post('/produno/new-produno',  async (req, res) => {
@@ -237,50 +287,6 @@ router.get("/searchback", function(req, res){
 
 
 
-/////////////////////////////////////////front//////////////////////////////////////////////////
-
-router.get('/aviador/:page', async (req, res) => {
-
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
-  let perPage = 8;
-  let page = req.params.page || 1;
-
-  Produno 
-  .find({}) // finding all documents
-  .sort( {timestamp: -1})
-  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
-  .limit(perPage) // output just 9 items
-  .exec((err, produno) => {
-    Produno.countDocuments((err, count) => { // count to calculate the number of pages
-      if (err) return next(err);
-      res.render('produno/produno', {
-        produno,
-        current: page,
-        pages: Math.ceil(count / perPage),
-        products: cart.generateArray(), totalPrice: cart.totalPrice
-
-      });
-    });
-  });
-});
-
-
-
-
-
-
-router.get('/aviador-detalles/:id', async (req, res) => {
-  const { id } = req.params;
-  const produno = await Produno.findById(id);
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
-  res.render('produno/produnoredirect', {
-    produno,
-    products: cart.generateArray(), totalPrice: cart.totalPrice
-
-  });
-});
 
 
 
