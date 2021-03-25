@@ -285,7 +285,7 @@ router.post('/proddos/tallecolor/:id',  async (req, res) => {
   // task.status = !task.status;
   // await task.save();
 
-  //res.redirect('/proddosredirect/' + id);
+  res.redirect('/round-detalles/' + id);
   //res.redirect('/shopcart');
 });
 
