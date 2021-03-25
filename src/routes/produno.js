@@ -498,7 +498,7 @@ router.post('/produno/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/aviator-detalles/' + id);
+  res.redirect('/aviador-detalles/' + id);
 });
 
 
