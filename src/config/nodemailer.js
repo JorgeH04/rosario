@@ -58,4 +58,4 @@ let renderTemplate = (data, relativePath) => {
 module.exports = {
     transporter: transporter,
     renderTemplate: renderTemplate
-}
+} 

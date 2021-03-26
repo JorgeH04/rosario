@@ -42,7 +42,7 @@ router.post('/prodveinte/new-prodveinte',  async (req, res) => {
     imagediecinueve,
     description,
     filtroprice,
-    enstock,
+    enstock, 
     color,
     colordos,
     colortres,
