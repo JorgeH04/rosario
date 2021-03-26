@@ -80,7 +80,7 @@ router.get('/aviador-detalles/:id', async (req, res) => {
     produno,
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
-  });
+  }); 
 });
 
 
@@ -193,7 +193,7 @@ router.post('/produno/new-produno',  async (req, res) => {
       colorsiete,
       colorocho,
       colornueve,
-      colordiez,
+      colordiez, 
       coloronce,
       colordoce,
       colortrece,
