@@ -338,7 +338,7 @@ router.post("/filtroprod", function(req, res){
 
   if(flrtName!='' ) {
 
-    var flterParameter={ $and:[{ talle:flrtName},
+    var flterParameter={ $and:[{ talleuno:flrtName},
       {$and:[{},{}]}
       ]
        
