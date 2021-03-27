@@ -229,8 +229,9 @@ router.get('/produnoback/:page', async (req, res) => {
   let page = req.params.page || 1;
 
   Produno 
-  .find()// finding all documents
-  .sort({_id:-1})
+  .find({}) // finding all documents
+  .sort( {timestamp: -1})
+ 
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
   .exec((err, produno) => {
