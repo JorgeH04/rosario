@@ -43,8 +43,8 @@ app.use(session({
 
 // middlewares
 app.use(sassMiddleware({
-  src : './asset/scss',
-  dest :'./asset/css',
+  src : './assetsss/scss',
+  dest :'./assetsss/css',
   debug : true,
   outputStyle : 'extended',
   prefix : '/css'
