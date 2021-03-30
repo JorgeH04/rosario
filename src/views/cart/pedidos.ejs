@@ -6,7 +6,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Pedidos y ventas || Arte Stelen</title>
+    <title>Pedidos y ventas || Pogopop</title>
     <link rel='stylesheet' href='/assets/css/bootstrap.min.css'>
     <link rel='stylesheet' href='/assets/css/owl.carousel.min.css'>
     <link rel='stylesheet' href='/assets/css/animated.css'>
@@ -67,17 +67,7 @@
                       </div>
                   </div>
                   <div class="header-bottom-right col-sm-3">
-                      <div class="header-bottom-right-content cart-menu-relative">
-
-                              <div class="cart-menu">
-                                  </div>
-                                  <div class="cart-hover">
-                                      
-                          </div>
-                              
-
-
-                      </div>
+                      
                       <div class="header-bottom-right-content my-supermarket">
                           
                           </div>
@@ -110,8 +100,9 @@
 <tr>
 
   <th>Producto</th>
- 
   <th>Cantidad</th>
+  <th>Talle</th>
+  <th>Color</th>
   <th>Precio</th>
 
   
@@ -128,8 +119,9 @@
   <% order.items.forEach(function (item ) { %>
 
   <td><%= item.item.title %></td>
- 
   <td><%= item.qty %></td>
+  <td><%= item.item.talleuno %></td>
+  <td><%= item.item.color %></td>
   <td><%= item.item.price %></td>
 
 </tr>

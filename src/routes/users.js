@@ -23,7 +23,7 @@ const { isAuthenticated } = require('../helpers/auth');
 //    }
 //  }))
 
-router.get('/pedidos/:page', async (req, res) => {
+router.get('/pogopedidos/:page', async (req, res) => {
 
   const totalpedidos = await Order.countDocuments({})
 
@@ -299,7 +299,7 @@ router.get('/users/backend', async (req, res) => {
 });
 
 
-router.get('/dashboard', async (req, res) => {
+router.get('/pogodashboard', async (req, res) => {
   const users = await User.find();
   res.render('users/dashboard', { users});
   
