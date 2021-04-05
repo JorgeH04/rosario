@@ -408,5 +408,143 @@ router.get('/moda-mujer', async (req, res) => {
 
 
 
+router.get('/colores-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/colores-hombres', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/lentesadecuados', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+router.get('/caras-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carashombre', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+
+
+
+
+//////////////
+
+router.get('/clasico-caras-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+router.get('/casual-caras-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+router.get('/moda-caras-mujer', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+
+
+
+////////
+
+
+
+router.get('/clasico-caras-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+
+
+router.get('/casual-caras-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
+
+
+router.get('/moda-caras-hombre', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('lentesprobador/carasmujer', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
 
 module.exports = router;
