@@ -507,7 +507,7 @@ router.get('/clasico-caras-hombre', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
 
-  res.render('lentesprobador/carasmujer', {
+  res.render('lentesprobador/carashombre', {
 
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
@@ -524,7 +524,7 @@ router.get('/casual-caras-hombre', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
 
-  res.render('lentesprobador/carasmujer', {
+  res.render('lentesprobador/carashombre', {
 
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
@@ -539,7 +539,7 @@ router.get('/moda-caras-hombre', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
 
-  res.render('lentesprobador/carasmujer', {
+  res.render('lentesprobador/carashombre', {
 
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
