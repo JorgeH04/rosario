@@ -22,6 +22,8 @@ router.post('/prodveintisiete/new-prodveintisiete',  async (req, res) => {
     name,
     title,
     image,
+    imageuno,
+
     imagedos,
     imagetres,
     imagecuatro,
@@ -92,6 +94,7 @@ router.post('/prodveintisiete/new-prodveintisiete',  async (req, res) => {
       name,
       title,
       image,
+      imageuno,
       imagedos,
       imagetres,
       imagecuatro,
