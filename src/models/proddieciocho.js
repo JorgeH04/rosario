@@ -5,6 +5,7 @@ const NoteSchema = new Schema({
   name: String,
   title: String,
   image: String,
+  imageuno: String,
   imagedos: String,
   imagetres: String,
   imagecuatro: String,
@@ -23,6 +24,9 @@ const NoteSchema = new Schema({
   imagediecisiete: String,
   imagedieciocho: String,
   imagediecinueve: String,
+  imageveinte: String,
+  imageveintiuno: String,
+  imageveintidos: String,
   description: String,
   filtroprice: String,
   enstock:String,
@@ -61,6 +65,7 @@ const NoteSchema = new Schema({
     type: Boolean,
     default: false
   } 
+
 });
 
 module.exports = mongoose.model('Proddieciocho', NoteSchema);
