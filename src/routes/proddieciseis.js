@@ -211,7 +211,7 @@ router.get('/wayfarer-detalles/:id', async (req, res) => {
 router.get('/wayfarer/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-   let perPage = 8;
+  let perPage = 16;
   let page = req.params.page || 1;
 
   Proddieciseis
@@ -289,7 +289,7 @@ router.get("/search", function(req, res){
 
 
 router.get('/proddieciseisback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 16;
   let page = req.params.page || 1;
 
   Proddieciseis

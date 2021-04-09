@@ -171,7 +171,7 @@ router.get('/ferrari-detalles/:id', async (req, res) => {
 router.get('/ferrari/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-   let perPage = 8;
+   let perPage = 16;
   let page = req.params.page || 1;
 
   Prodveintiseis
@@ -249,7 +249,7 @@ router.get("/search", function(req, res){
 
 
 router.get('/prodveintiseisback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 16;
   let page = req.params.page || 1;
 
   Prodveintiseis
