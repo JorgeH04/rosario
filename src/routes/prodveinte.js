@@ -155,7 +155,7 @@ router.post('/prodveinte/new-prodveinte',  async (req, res) => {
 
 
 
-router.get('/prodveinteredirect/:id', async (req, res) => {
+router.get('/caravan-colonel-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -168,7 +168,7 @@ router.get('/prodveinteredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodveinteindex/:page', async (req, res) => {
+router.get('/caravan-colonel/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

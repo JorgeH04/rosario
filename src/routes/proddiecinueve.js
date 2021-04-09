@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Models
-const Prodiecinueve = require('../models/prodiecinueve');
+const Prodiecinueve = require('../models/proddiecinueve');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 
