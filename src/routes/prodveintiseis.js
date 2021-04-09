@@ -328,7 +328,7 @@ router.get("/searchback", function(req, res){
 // });
 
 
-
+ 
 
 //editar
  
@@ -356,25 +356,66 @@ router.get('/prodveintiseis/delete/:id', async (req, res) => {
 
 
 
+router.get('/prodveintiseis/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
+  const prodveintiseis = await Prodveintiseis.findById(req.params.id);
+  res.render('prodveintiseis/tallecolor-prodveintiseis', { 
+    prodveintiseis,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodveintiseis/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodveintiseis.updateOne({_id: id}, req.body);
+   const task = await Prodveintiseis.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/ferrari-detalles/' + id);
+});
 
 
 router.get('/addtocardprodveintiseis/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveintiseis.findById(productId, function(err, product){
+  Prodveintiseis.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/ferrari-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
+
+
+ 
+
+
+
+ 
+
+
+
 
 
 
