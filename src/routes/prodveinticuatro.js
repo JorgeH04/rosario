@@ -155,7 +155,7 @@ router.post('/prodveinticuatro/new-prodveinticuatro',  async (req, res) => {
 
 
 
-router.get('/prodveinticuatroredirect/:id', async (req, res) => {
+router.get('/clubmaster-clubround-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -168,7 +168,7 @@ router.get('/prodveinticuatroredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodveinticuatroindex/:page', async (req, res) => {
+router.get('/clubmaster-clubround/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;
@@ -358,24 +358,59 @@ router.get('/prodveinticuatro/delete/:id', async (req, res) => {
 
 
 
+ 
+
+router.get('/prodveinticuatro/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodveinticuatro = await Prodveinticuatro.findById(req.params.id);
+  res.render('prodveinticuatro/tallecolor-prodveinticuatro', { 
+    prodveinticuatro,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodveinticuatro/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodveinticuatro.updateOne({_id: id}, req.body);
+   const task = await Prodveinticuatro.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/clubmaster-clubround-detalles/' + id);
+});
+
 
 router.get('/addtocardprodveinticuatro/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveinticuatro.findById(productId, function(err, product){
+  Prodveinticuatro.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/clubmaster-clubround-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
 
+ 
 
 
 module.exports = router;

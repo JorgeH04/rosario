@@ -359,22 +359,59 @@ router.get('/prodveintidos/delete/:id', async (req, res) => {
 
 
 
+
+
+router.get('/prodveintidos/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodveintidos = await Prodveintidos.findById(req.params.id);
+  res.render('prodveintidos/tallecolor-prodveintidos', { 
+    prodveintidos,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodveintidos/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodveintidos.updateOne({_id: id}, req.body);
+   const task = await Prodveintidos.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/caravan-colonel-detalles/' + id);
+});
+
+
 router.get('/addtocardprodveintidos/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveintidos.findById(productId, function(err, product){
+  Prodveintidos.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/caravan-colonel-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
+ 
 
 
 

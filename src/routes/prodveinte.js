@@ -359,22 +359,68 @@ router.get('/prodveinte/delete/:id', async (req, res) => {
 
 
 
+ 
+
+
+
+
+
+
+
+
+
+router.get('/prodveinte/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodveinte = await Prodveinte.findById(req.params.id);
+  res.render('prodveinte/tallecolor-prodveinte', { 
+    prodveinte,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodveinte/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodveinte.updateOne({_id: id}, req.body);
+   const task = await Prodveinte.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/aviadorh-detalles/' + id);
+});
+
+
 router.get('/addtocardprodveinte/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveinte.findById(productId, function(err, product){
+  Prodveinte.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/aviadorh-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
+
+
 
 
 
