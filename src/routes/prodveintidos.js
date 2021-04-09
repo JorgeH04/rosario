@@ -155,7 +155,7 @@ router.post('/prodveintidos/new-prodveintidos',  async (req, res) => {
 
 
 
-router.get('/prodveintidosredirect/:id', async (req, res) => {
+router.get('/clubmaster-clubround-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -168,7 +168,7 @@ router.get('/prodveintidosredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodveintidosindex/:page', async (req, res) => {
+router.get('/clubmaster-clubround/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;
