@@ -359,22 +359,63 @@ router.get('/prodveinticinco/delete/:id', async (req, res) => {
 
 
 
+  
+
+
+router.get('/prodveinticinco/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodveinticinco = await Prodveinticinco.findById(req.params.id);
+  res.render('prodveinticinco/tallecolor-prodveinticinco', { 
+    prodveinticinco,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodveinticinco/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodveinticinco.updateOne({_id: id}, req.body);
+   const task = await Prodveinticinco.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/envolventes-detalles/' + id);
+});
+
+
 router.get('/addtocardprodveinticinco/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveinticinco.findById(productId, function(err, product){
+  Prodveinticinco.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/envolventes-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
+
+
+ 
+
 
 
 
