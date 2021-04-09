@@ -183,7 +183,7 @@ router.get('/ferrari/:page', async (req, res) => {
     Prodveintiseis.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
       res.render('prodveintiseis/prodveintiseis', {
-        Prodveintiseis,
+        prodveintiseis,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
