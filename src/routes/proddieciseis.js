@@ -431,4 +431,65 @@ router.get('/addtocardproddieciseis/:id', function(req, res, next){
 });
 
 
+
+
+
+
+
+  
+
+
+router.get('/proddieciseis/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const proddieciseis = await Proddieciseis.findById(req.params.id);
+  res.render('proddieciseis/tallecolor-proddieciseis', { 
+    proddieciseis,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/proddieciseis/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Proddieciseis.updateOne({_id: id}, req.body);
+   const task = await Proddieciseis.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/wayfarer-detalles/' + id);
+});
+
+
+router.get('/addtocardproddieciseis/:id', function(req, res, next){
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  Prodproddieciseis.findById(productId,async function(err, product){
+    if(err){
+      return res-redirect('/');
+    }
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/wayfarer-detalles/' + productId);
+   }
+
+
+    res.redirect('/shopcart');
+  });
+});
+
+
+
+
 module.exports = router;
