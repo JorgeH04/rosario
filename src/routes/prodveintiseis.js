@@ -335,7 +335,7 @@ router.get("/searchback", function(req, res){
 
 router.get('/prodveintiseis/edit/:id',  async (req, res) => {
   const prodveintiseis = await Prodveintiseis.findById(req.params.id);
-  res.render('prodveintiseis/edit-prodveintiseis', { prodocho });
+  res.render('prodveintiseis/edit-prodveintiseis', { prodveintiseis });
 });
 
 router.post('/prodveintiseis/edit/:id',  async (req, res) => {
