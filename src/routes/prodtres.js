@@ -302,7 +302,7 @@ router.post("/filtroprodtres", function(req, res){
     }else{
       var flterParameter={}
   }
-  var prodtres = Produno.find(flterParameter);
+  var prodtres = Prodtres.find(flterParameter);
   prodtres
   //.find( flterParameter) 
   .sort({ _id: -1 })
