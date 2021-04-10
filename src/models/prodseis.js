@@ -5,6 +5,8 @@ const NoteSchema = new Schema({
   name: String,
   title: String,
   image: String,
+  imageuno: String,
+  imageuno: String,
   imagedos: String,
   imagetres: String,
   imagecuatro: String,
