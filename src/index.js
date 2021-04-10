@@ -116,8 +116,14 @@ app.use(require('./routes/prodveintisiete'));
 app.use(require('./routes/prodveintiocho'));
 app.use(require('./routes/prodveintinueve'));
 app.use(require('./routes/prodtreinta'));
- 
+//app.use(require('./routes/prodtreintiuno')); 
 
+app.use(require('./routes/prodtreintidos'));
+app.use(require('./routes/prodtreintitres'));
+app.use(require('./routes/prodtreinticuatro'));
+app.use(require('./routes/prodtreinticinco'));
+app.use(require('./routes/prodtreintiseis'));
+app.use(require('./routes/prodtreintisiete'));
 
    
 app.use(require('./routes/prodenvio'));

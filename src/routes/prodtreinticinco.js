@@ -153,7 +153,7 @@ router.post('/prodtreinticinco/new-prodtreinticinco',  async (req, res) => {
 
 
 
-router.get('/prodtreinticincoredirect/:id', async (req, res) => {
+router.get('/mujer-moda-ovalada-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -166,7 +166,7 @@ router.get('/prodtreinticincoredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodtreinticincoindex/:page', async (req, res) => {
+router.get('/mujer-moda-ovalada/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;
@@ -258,7 +258,7 @@ router.get('/prodtreinticincoback/:page', async (req, res) => {
   .exec((err, prodtreinticinco) => {
     Prodtreinticinco.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodtreinticinco/new-prodtreinticinco', {
+      res.render('prodtreintaicinco/new-prodtreintaicinco', {
         prodtreinticinco,
         current: page,
         pages: Math.ceil(count / perPage)
