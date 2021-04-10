@@ -37,7 +37,7 @@
       </h3>
     </div>
     <div class="card-body">
-      <form action="/prodtreintaicinco/new-prodtreintaicinco" method="POST">
+      <form action="/prodtreintaiocho/new-prodtreintaiocho" method="POST">
     <!--  <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="name" autofocus/>
           </div> --> 
@@ -252,7 +252,7 @@
                             <div class="col-12 bg-white text-center h-100 product-item">
                                 <div class="row h-100">
                                     <div class="col-12 p-0 mb-3">
-                                        <a href="/prodtreintaicincoredirect/<%= produn.id %>">
+                                        <a href="/prodtreintaiochoredirect/<%= produn.id %>">
                                             <img src="<%= produn.color %>" class="img-fluid">
                                         </a>
                                     </div>
@@ -265,10 +265,10 @@
                                             </span>
                                         
                                     </div>
-                                    <a class="btn btn-danger" href="/prodtreintaicinco/delete/<%= produn.id %>">
+                                    <a class="btn btn-danger" href="/prodtreintaiocho/delete/<%= produn.id %>">
                                         Eliminar
                                     </a>
-                                    <a class="btn btn-primary" href="/prodtreintaicinco/edit/<%= produn.id %>">
+                                    <a class="btn btn-primary" href="/prodtreintaiocho/edit/<%= produn.id %>">
                                         Editar
                                     </a>
                                 </div>
@@ -305,7 +305,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaicincoback/1">First</a>
+                                <a class="page-link" href="/prodtreintaiochoback/1">First</a>
                               </li>
                             <% } %>
                             <!-- ITEMS  -->
@@ -324,7 +324,7 @@
                                 </li>
                               <% } else { %>
                                 <li class="page-item">
-                                  <a class="page-link" href="/prodtreintaicincoback/<%= i %>">
+                                  <a class="page-link" href="/prodtreintaiochoback/<%= i %>">
                                     <%= i %>
                                   </a>
                                 </li>
@@ -344,7 +344,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaicincoback/<%= pages %>">
+                                <a class="page-link" href="/prodtreintaiochoback/<%= pages %>">
                                   Last
                                 </a>
                               </li>

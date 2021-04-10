@@ -124,6 +124,12 @@ app.use(require('./routes/prodtreinticuatro'));
 app.use(require('./routes/prodtreinticinco'));
 app.use(require('./routes/prodtreintiseis'));
 app.use(require('./routes/prodtreintisiete'));
+app.use(require('./routes/prodtreintiocho'));
+app.use(require('./routes/prodtreintinueve'));
+app.use(require('./routes/prodcuarenta'));
+//app.use(require('./routes/prodcuarentiuno'));
+//app.use(require('./routes/prodcuarentidos'));
+//app.use(require('./routes/prodcuarentitres'));
 
    
 app.use(require('./routes/prodenvio'));
