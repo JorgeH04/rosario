@@ -15,7 +15,7 @@ router.get('/clubround/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Prodcuatro
@@ -214,7 +214,7 @@ router.post('/prodcuatro/new-prodcuatro',  async (req, res) => {
 
 // New product
 router.get('/prodcuatroback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Prodcuatro

@@ -19,7 +19,7 @@ const { isAuthenticated } = require('../helpers/auth');
 router.get('/aviadorh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Proddieciocho
@@ -294,7 +294,7 @@ router.post("/filtroproddieciocho", function(req, res){
 
 
 router.get('/proddieciochoback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Proddieciocho

@@ -18,7 +18,7 @@ const { isAuthenticated } = require('../helpers/auth');
 
     var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-    let perPage = 8;
+    let perPage = 15;
     let page = req.params.page || 1;
   
     Prodcinco
@@ -202,7 +202,7 @@ router.get('/prodcincoindex/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Prodcinco

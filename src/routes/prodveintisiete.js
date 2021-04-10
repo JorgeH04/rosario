@@ -172,7 +172,7 @@ router.get('/prodveintisieteredirect/:id', async (req, res) => {
 router.get('/prodveintisieteindex/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-   let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Prodveintisiete
@@ -250,7 +250,7 @@ router.get("/search", function(req, res){
 
 
 router.get('/prodveintisieteback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Prodveintisiete

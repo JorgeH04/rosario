@@ -172,7 +172,7 @@ router.get('/wings-detalles/:id', async (req, res) => {
 router.get('/wings/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-   let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Proddiecisiete
@@ -258,7 +258,7 @@ router.get('/likeproddiecisiete/:id', async (req, res, next) => {
 
 
 router.get('/proddiecisieteback/:page', async (req, res) => {
-  let perPage = 8;
+  let perPage = 15;
   let page = req.params.page || 1;
 
   Proddiecisiete
