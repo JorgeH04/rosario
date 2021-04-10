@@ -320,47 +320,102 @@ router.get('/prodcinco/delete/:id', async (req, res) => {
 
 
 
-router.get('/shopcart', function (req, res, next){
+router.post("/filtroprodcinco", function(req, res){
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  if(!req.session.cart){
-    return res.render('cart/shopcart', {products:null})
+  let perPage = 15;
+  let page = req.params.page || 1;
+
+  var flrtName = req.body.filtroprod;
+
+  if(flrtName!='' ) {
+
+    var flterParameter={ $and:[{ talleuno:flrtName},
+      {$and:[{},{}]}
+      ]
+       
+    }
+    }else{
+      var flterParameter={}
   }
-
-  var cart = new Cart(req.session.cart);
-  res.render('cart/shopcart', {products: cart.generateArray(), totalPrice: cart.totalPrice})
+  var prodcinco = Prodcinco.find(flterParameter);
+  prodcinco
+  //.find( flterParameter) 
+  .sort({ _id: -1 })
+  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+  .limit(perPage) // output just 9 items
+  .exec((err, data) => {
+    prodcinco.countDocuments((err, count) => {  
+  //.exec(function(err,data){
+      if(err) throw err;
+      res.render("prodcinco/prodcinco",
+      {
+        prodcinco: data, 
+        current: page,
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
+      });
+    });
+  });
 });
+
  
+
+
+
+
+router.get('/prodcinco/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodcinco = await Prodcinco.findById(req.params.id);
+  res.render('prodcinco/tallecolor-prodcinco', { 
+    prodcinco,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodcinco/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodcinco.updateOne({_id: id}, req.body);
+   const task = await Prodcinco.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/cats-gatsby-detalles/' + id);
+});
 
 
 router.get('/addtocardprodcinco/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+
   Prodcinco.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/cats-gatsby-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
+
+
+
+
 
 module.exports = router;

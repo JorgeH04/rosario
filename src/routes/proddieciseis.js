@@ -282,6 +282,46 @@ router.get("/search", function(req, res){
 
 
 
+router.post("/filtroproddieciseis", function(req, res){
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  let perPage = 15;
+  let page = req.params.page || 1;
+
+  var flrtName = req.body.filtroprod;
+
+  if(flrtName!='' ) {
+
+    var flterParameter={ $and:[{ talleuno:flrtName},
+      {$and:[{},{}]}
+      ]
+       
+    }
+    }else{
+      var flterParameter={}
+  }
+  var proddieciseis = Proddieciseis.find(flterParameter);
+  proddieciseis
+  //.find( flterParameter) 
+  .sort({ _id: -1 })
+  .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+  .limit(perPage) // output just 9 items
+  .exec((err, data) => {
+    proddieciseis.countDocuments((err, count) => {  
+  //.exec(function(err,data){
+      if(err) throw err;
+      res.render("proddieciseis/proddieciseis",
+      {
+        proddieciseis: data, 
+        current: page,
+        pages: Math.ceil(count / perPage),
+        products: cart.generateArray(), totalPrice: cart.totalPrice
+      });
+    });
+  });
+});
+
+
 
 
 ////////////////////////////////////////////////////////////////////7
