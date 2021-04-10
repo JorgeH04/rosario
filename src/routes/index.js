@@ -250,6 +250,20 @@ router.get('/probarse-en-casa', async (req, res) => {
 
 
 
+
+router.get('/tallecorrecto', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+
+  res.render('tallecorrecto', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+  });
+});
+
+
+
 router.get('/cambios-y-devoluciones', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -315,7 +329,6 @@ router.get('/lentes-adecuados-hombre', async (req, res) => {
 
   });
 });
-
 
 
 
