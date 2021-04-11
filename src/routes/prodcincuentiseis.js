@@ -153,7 +153,7 @@ router.post('/prodcincuentiseis/new-prodcincuentiseis',  async (req, res) => {
 
 
 
-router.get('/prodcincuentiseisredirect/:id', async (req, res) => {
+router.get('/descuento-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -166,7 +166,7 @@ router.get('/prodcincuentiseisredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodcincuentiseisindex/:page', async (req, res) => {
+router.get('/descuento/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

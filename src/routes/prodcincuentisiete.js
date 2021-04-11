@@ -11,7 +11,7 @@ const Cartdolar = require('../models/cartdolar');
 const { isAuthenticated } = require('../helpers/auth');
 
 
-router.get('/clubmaster/:page', async (req, res) => {
+router.get('/masvendidos/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -178,7 +178,7 @@ router.post('/prodcincuentisiete/new-prodcincuentisiete',  async (req, res) => {
 
 
 
-router.get('/clubmaster-detalles/:id', async (req, res) => {
+router.get('/masvendidos-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const prodcincuentisiete = await Prodcincuentisiete.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
