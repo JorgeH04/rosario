@@ -48,7 +48,7 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
     image,
     imageuno,
     imagedos,
-    imagecuarentitres,
+    imagetres,
     imagecuatro,
     imagecinco,
     imageseis,
@@ -70,7 +70,7 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
     enstock,
     color,
     colordos,
-    colorcuarentitres,
+    colortres,
     colorcuatro,
     colorcinco,
     colorseis,
@@ -90,7 +90,7 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
     talle,
     talleuno,
     talledos,
-    tallecuarentitres,
+    talletres,
     oldprice,
     price,
     dolarprice 
@@ -119,7 +119,7 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
       image,
       imageuno,
       imagedos,
-      imagecuarentitres,
+      imagetres,
       imagecuatro,
       imagecinco,
       imageseis,
@@ -141,7 +141,7 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
       enstock,
       color,
       colordos,
-      colorcuarentitres,
+      colortres,
       colorcuatro,
       colorcinco,
       colorseis,
@@ -161,10 +161,10 @@ router.post('/prodcuarentitres/new-prodcuarentitres',  async (req, res) => {
       talle,
       talleuno,
       talledos,
-      tallecuarentitres,
+      talletres,
       oldprice,
       price,
-      dolarprice 
+      dolarprice  
     });
     //newNote.user = req.user.id;
     await newNote.save();
