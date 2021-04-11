@@ -39,7 +39,21 @@ router.get('/mujer-clasico-rectangular/:page', async (req, res) => {
 
 
 
+router.get('/mujer-clasico-rectangular-detalles/:id', async (req, res) => {
+    const { id } = req.params;
+    const prodtreintinueve = await Prodtreintinueve.findById(id);
+    var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+  
+    res.render('prodtreintinueve/prodtreintinueveredirect', {
+      prodtreintinueve,
+      products: cart.generateArray(), totalPrice: cart.totalPrice
+  
+    });
+  });
 
+  
+
+  
 
 router.post('/prodtreintinueve/new-prodtreintinueve',  async (req, res) => {
   const { 
@@ -178,17 +192,6 @@ router.post('/prodtreintinueve/new-prodtreintinueve',  async (req, res) => {
 
 
 
-router.get('/mujer-clasico-rectangular-detalles/:id', async (req, res) => {
-  const { id } = req.params;
-  const prodtreintinueve = await Prodtreintinueve.findById(id);
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
-  res.render('prodtreintinueve/prodtreintinueveredirect', {
-    prodtreintinueve,
-    products: cart.generateArray(), totalPrice: cart.totalPrice
-
-  });
-});
 
 
 
