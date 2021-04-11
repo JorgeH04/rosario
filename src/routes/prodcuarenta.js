@@ -177,7 +177,6 @@ router.post('/prodcuarenta/new-prodcuarenta',  async (req, res) => {
 
 
 
-
 router.get('/mujer-clasico-redonda-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const prodcuarenta = await Prodcuarenta.findById(id);

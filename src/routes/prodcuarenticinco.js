@@ -156,7 +156,8 @@ router.post('/prodseis/new-prodseis',  async (req, res) => {
 
 
 
-router.get('/cateye-detalles/:id', async (req, res) => {
+
+router.get('/mujer-moda-rectangular-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -169,7 +170,7 @@ router.get('/cateye-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
  
-router.get('/cateye/:page', async (req, res) => {
+router.get('/mujer-moda-rectangular/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;

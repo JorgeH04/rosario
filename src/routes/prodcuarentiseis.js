@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Models
-const Prodsiete = require('../models/prodsiete');
+const Prodcuarentiseis = require('../models/prodcuarentiseis');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 const Cartdolar = require('../models/cartdolar');
@@ -18,7 +18,7 @@ const { isAuthenticated } = require('../helpers/auth');
 /////////////////////////////////////////////////////////////////////7
 
 
-router.post('/prodsiete/new-prodsiete',  async (req, res) => {
+router.post('/prodcuarentiseis/new-prodcuarentiseis',  async (req, res) => {
   const { 
     name,
     title,
@@ -90,7 +90,7 @@ router.post('/prodsiete/new-prodsiete',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodsiete({ 
+    const newNote = new Prodcuarentiseis({ 
       name,
       title,
       image,
@@ -146,55 +146,45 @@ router.post('/prodsiete/new-prodsiete',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodsieteback/1');
+    res.redirect('/prodcuarentiseisback/1');
   }
 });
 
 
 
- ////////////////////////////like////////////////////////
 
- router.get('/lineablaze/:id', async (req, res, next) => {
-  // let { id } = req.params;
-  // const task = await Ofertauno.findById(id);
-  const taskk = await Prodsiete.findById(req.params.id);
-  taskk.like = !taskk.like;
-  await taskk.save();
- // res.redirect('/pedidos/:1');
-  res.json(true);
-});
  
 
 
-router.get('/chris-cocqpit-detalles/:id', async (req, res) => {
+router.get('/mujer-moda-redonda-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
-  const prodsiete = await Prodsiete.findById(id);
-  res.render('prodsiete/prodsieteredirect', {
-    prodsiete,
+  const prodcuarentiseis = await Prodcuarentiseis.findById(id);
+  res.render('prodcuarentiseis/prodcuarentiseisredirect', {
+    prodcuarentiseis,
     products: cart.generateArray(), totalPrice: cart.totalPrice
   });
 });
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/chris-cocqpit/:page', async (req, res) => {
+router.get('/mujer-moda-redonda/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodsiete
+  Prodcuarentiseis
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodsiete) => {
-    Prodsiete.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcuarentiseis) => {
+    Prodcuarentiseis.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodsiete/prodsiete', {
-        prodsiete,
+      res.render('prodcuarentiseis/prodcuarentiseis', {
+        prodcuarentiseis,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -204,6 +194,19 @@ router.get('/chris-cocqpit/:page', async (req, res) => {
 });
 
 
+
+
+ ////////////////////////////like////////////////////////
+
+ router.get('/mujer-moda-redonda-detalles/:id', async (req, res, next) => {
+  // let { id } = req.params;
+  // const task = await Ofertauno.findById(id);
+  const taskk = await Prodcuarentiseis.findById(req.params.id);
+  taskk.like = !taskk.like;
+  await taskk.save();
+ // res.redirect('/pedidos/:1');
+  res.json(true);
+});
 
 
 
@@ -259,20 +262,20 @@ router.get("/search", function(req, res){
 
 
 
-router.get('/prodsieteback/:page', async (req, res) => {
+router.get('/prodcuarentiseisback/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodsiete
+  Prodcuarentiseis
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodsiete) => {
-    Prodsiete.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcuarentiseis) => {
+    Prodcuarentiseis.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodsiete/new-prodsiete', {
-        prodsiete,
+      res.render('prodcuarentiseis/new-prodcuarentiseis', {
+        prodcuarentiseis,
         current: page,
         pages: Math.ceil(count / perPage)
       });
@@ -344,25 +347,25 @@ router.get("/searchback", function(req, res){
 //editar
  
 
-router.get('/prodsiete/edit/:id',  async (req, res) => {
-  const prodsiete = await Prodsiete.findById(req.params.id);
-  res.render('prodsiete/edit-prodsiete', { prodsiete });
+router.get('/prodcuarentiseis/edit/:id',  async (req, res) => {
+  const prodcuarentiseis = await Prodcuarentiseis.findById(req.params.id);
+  res.render('prodcuarentiseis/edit-prodcuarentiseis', { prodcuarentiseis });
 });
 
-router.post('/prodsiete/edit/:id',  async (req, res) => {
+router.post('/prodcuarentiseis/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodsiete.updateOne({_id: id}, req.body);
-  res.redirect('/prodsieteback/:1');
+  await Prodcuarentiseis.updateOne({_id: id}, req.body);
+  res.redirect('/prodcuarentiseisback/:1');
 });
 
 
 
 
 // Delete 
-router.get('/prodsiete/delete/:id', async (req, res) => {
+router.get('/prodcuarentiseis/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodsiete.deleteOne({_id: id});
-  res.redirect('/prodsieteback/:1');
+    await Prodcuarentiseis.deleteOne({_id: id});
+  res.redirect('/prodcuarentiseisback/:1');
 });
 
 
@@ -370,11 +373,11 @@ router.get('/prodsiete/delete/:id', async (req, res) => {
 
 
 
-router.get('/addtocardprodsiete/:id', function(req, res, next){
+router.get('/addtocardprodcuarentiseis/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
   var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-  Prodsiete.findById(productId,async function(err, product){
+  Prodcuarentiseis.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }

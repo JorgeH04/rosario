@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
  
-cuarentidos
 // Models
 const Prodcuarentidos = require('../models/prodcuarentidos');
 const Cart = require('../models/cart');
@@ -119,7 +118,7 @@ router.post('/prodcuarentidos/new-prodcuarentidos',  async (req, res) => {
       image,
       imageuno,
       imagedos,
-      imagecuarentidos,
+      imagetres,
       imagecuatro,
       imagecinco,
       imageseis,
@@ -141,7 +140,7 @@ router.post('/prodcuarentidos/new-prodcuarentidos',  async (req, res) => {
       enstock,
       color,
       colordos,
-      colorcuarentidos,
+      colortres,
       colorcuatro,
       colorcinco,
       colorseis,

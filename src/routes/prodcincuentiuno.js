@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Models  
-const Prodtreintidos = require('../models/prodtreintidos');
+const Prodcincuentiuno = require('../models/prodcincuentiuno');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 
@@ -17,7 +17,7 @@ const { isAuthenticated } = require('../helpers/auth');
 /////////////////////////////////////////////////////////////////////7
 
 
-router.post('/prodtreintidos/new-prodtreintidos',  async (req, res) => {
+router.post('/prodcincuentiuno/new-prodcincuentiuno',  async (req, res) => {
   const { 
     name,
     title,
@@ -88,7 +88,7 @@ router.post('/prodtreintidos/new-prodtreintidos',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodtreintidos({ 
+    const newNote = new Prodcincuentiuno({ 
       name,
       title,
       image,
@@ -143,7 +143,7 @@ router.post('/prodtreintidos/new-prodtreintidos',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodtreintidosback/1');
+    res.redirect('/prodcincuentiunoback/1');
   }
 });
 
@@ -153,35 +153,35 @@ router.post('/prodtreintidos/new-prodtreintidos',  async (req, res) => {
 
 
 
-router.get('/prodtreintidosredirect/:id', async (req, res) => {
+router.get('/hombre-clasico-rectangular-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
-  const prodtreintidos = await Prodtreintidos.findById(id);
-  res.render('prodtreintidos/prodtreintidosredirect', {
-    prodtreintidos,
+  const prodcincuentiuno = await Prodcincuentiuno.findById(id);
+  res.render('prodcincuentiuno/prodcincuentiunoredirect', {
+    prodcincuentiuno,
     products: cart.generateArray(), totalPrice: cart.totalPrice
   });
 });
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodtreintidosindex/:page', async (req, res) => {
+router.get('/hombre-clasico-rectangular/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;
   let page = req.params.page || 1;
 
-  Prodtreintidos
+  Prodcincuentiuno
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodtreintidos) => {
-    Prodtreintidos.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcincuentiuno) => {
+    Prodcincuentiuno.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodtreintidos/prodtreintidos', {
-        prodtreintidos,
+      res.render('prodcincuentiuno/prodcincuentiuno', {
+        prodcincuentiuno,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -246,20 +246,20 @@ router.get("/search", function(req, res){
 
 
 
-router.get('/prodtreintidosback/:page', async (req, res) => {
+router.get('/prodcincuentiunoback/:page', async (req, res) => {
   let perPage = 8;
   let page = req.params.page || 1;
 
-  Prodtreintidos
+  Prodcincuentiuno
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodtreintidos) => {
-    Prodtreintidos.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcincuentiuno) => {
+    Prodcincuentiuno.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodtreintidos/new-prodtreintidos', {
-        prodtreintidos,
+      res.render('prodcincuentiuno/new-prodcincuentiuno', {
+        prodcincuentiuno,
         current: page,
         pages: Math.ceil(count / perPage)
       });
@@ -331,25 +331,25 @@ router.get("/searchback", function(req, res){
 //editar
  
 
-router.get('/prodtreintidos/edit/:id',  async (req, res) => {
-  const prodtreintidos = await Prodtreintidos.findById(req.params.id);
-  res.render('prodtreintidos/edit-prodtreintidos', { prodtreintidos });
+router.get('/prodcincuentiuno/edit/:id',  async (req, res) => {
+  const prodcincuentiuno = await Prodcincuentiuno.findById(req.params.id);
+  res.render('prodcincuentiuno/edit-prodcincuentiuno', { prodcincuentiuno });
 });
 
-router.post('/prodtreintidos/edit/:id',  async (req, res) => {
+router.post('/prodcincuentiuno/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodtreintidos.updateOne({_id: id}, req.body);
-  res.redirect('/prodtreintidosback/:1');
+  await Prodcincuentiuno.updateOne({_id: id}, req.body);
+  res.redirect('/prodcincuentiunoback/:1');
 });
 
 
 
 
 // Delete 
-router.get('/prodtreintidos/delete/:id', async (req, res) => {
+router.get('/prodcincuentiuno/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodtreintidos.deleteOne({_id: id});
-  res.redirect('/prodtreintidosback/:1');
+    await Prodcincuentiuno.deleteOne({_id: id});
+  res.redirect('/prodcincuentiunoback/:1');
 });
 
 
@@ -357,11 +357,11 @@ router.get('/prodtreintidos/delete/:id', async (req, res) => {
 
 
 
-router.get('/addtocardprodtreintidos/:id', function(req, res, next){
+router.get('/addtocardprodcincuentiuno/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodtreintidos.findById(productId, function(err, product){
+  Prodcincuentiuno.findById(productId, function(err, product){
     if(err){
       return res-redirect('/');
     }

@@ -3,7 +3,7 @@ const router = express.Router();
  
 
 // Models
-const Prodtres = require('../models/prodtres');
+const Prodcincuentisiete = require('../models/prodcincuentisiete');
 const Cart = require('../models/cart');
 const Cartdolar = require('../models/cartdolar');
  
@@ -18,16 +18,16 @@ router.get('/clubmaster/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodtres
+  Prodcincuentisiete
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodtres) => {
-    Prodtres.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcincuentisiete) => {
+    Prodcincuentisiete.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodtres/prodtres', {
-        prodtres,
+      res.render('prodcincuentisiete/prodcincuentisiete', {
+        prodcincuentisiete,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -41,14 +41,14 @@ router.get('/clubmaster/:page', async (req, res) => {
 
 
 
-router.post('/prodtres/new-prodtres',  async (req, res) => {
+router.post('/prodcincuentisiete/new-prodcincuentisiete',  async (req, res) => {
   const { 
     name,
     title,
     image,
     imageuno,
     imagedos,
-    imagetres,
+    imagecincuentisiete,
     imagecuatro,
     imagecinco,
     imageseis,
@@ -70,7 +70,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
     enstock,
     color,
     colordos,
-    colortres,
+    colorcincuentisiete,
     colorcuatro,
     colorcinco,
     colorseis,
@@ -90,7 +90,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
     talle,
     talleuno,
     talledos,
-    talletres,
+    tallecincuentisiete,
     oldprice,
     price,
     dolarprice 
@@ -113,13 +113,13 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodtres({ 
+    const newNote = new Prodcincuentisiete({ 
       name,
       title,
       image,
       imageuno,
       imagedos,
-      imagetres,
+      imagecincuentisiete,
       imagecuatro,
       imagecinco,
       imageseis,
@@ -141,7 +141,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
       enstock,
       color,
       colordos,
-      colortres,
+      colorcincuentisiete,
       colorcuatro,
       colorcinco,
       colorseis,
@@ -161,7 +161,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
       talle,
       talleuno,
       talledos,
-      talletres,
+      tallecincuentisiete,
       oldprice,
       price,
       dolarprice 
@@ -169,7 +169,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodtresback/1');
+    res.redirect('/prodcincuentisieteback/1');
   }
 });
 
@@ -180,11 +180,11 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
 
 router.get('/clubmaster-detalles/:id', async (req, res) => {
   const { id } = req.params;
-  const prodtres = await Prodtres.findById(id);
+  const prodcincuentisiete = await Prodcincuentisiete.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  res.render('prodtres/prodtresredirect', {
-    prodtres,
+  res.render('prodcincuentisiete/prodcincuentisieteredirect', {
+    prodcincuentisiete,
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
   });
@@ -195,10 +195,10 @@ router.get('/clubmaster-detalles/:id', async (req, res) => {
 
  ////////////////////////////like////////////////////////
 
- router.get('/likeprodtres/:id', async (req, res, next) => {
+ router.get('/likeprodcincuentisiete/:id', async (req, res, next) => {
   // let { id } = req.params;
   // const task = await Ofertauno.findById(id);
-  const task = await Prodtres.findById(req.params.id);
+  const task = await Prodcincuentisiete.findById(req.params.id);
   task.like = !task.like;
   await task.save();
  // res.redirect('/pedidos/:1');
@@ -208,23 +208,23 @@ router.get('/clubmaster-detalles/:id', async (req, res) => {
 
 
 // New product
-router.get('/prodtresback/:page', async (req, res) => {
+router.get('/prodcincuentisieteback/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodtres
+  Prodcincuentisiete
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodtres) => {
-    Prodtres.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcincuentisiete) => {
+    Prodcincuentisiete.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodtres/new-prodtres', {
-        prodtres,
+      res.render('prodcincuentisiete/new-prodcincuentisiete', {
+        prodcincuentisiete,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -240,15 +240,15 @@ router.get('/prodtresback/:page', async (req, res) => {
 
 
 // talle y color
-router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-  const prodtres = await Prodtres.findById(req.params.id);
-  res.render('prodtres/tallecolor-prodtres', { prodtres });
+router.get('/prodcincuentisiete/tallecolor/:id',  async (req, res) => {
+  const prodcincuentisiete = await Prodcincuentisiete.findById(req.params.id);
+  res.render('prodcincuentisiete/tallecolor-prodcincuentisiete', { prodcincuentisiete });
 });
 
-router.post('/prodtres/tallecolor/:id',  async (req, res) => {
+router.post('/prodcincuentisiete/tallecolor/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodtres.updateOne({_id: id}, req.body);
-  res.redirect('/prodtresredirect/' + id);
+  await Prodcincuentisiete.updateOne({_id: id}, req.body);
+  res.redirect('/prodcincuentisieteredirect/' + id);
 });
 
 
@@ -257,25 +257,25 @@ router.post('/prodtres/tallecolor/:id',  async (req, res) => {
 //editar
 
 
-router.get('/prodtres/edit/:id',  async (req, res) => {
-  const prodtres = await Prodtres.findById(req.params.id);
-  res.render('prodtres/edit-prodtres', { prodtres });
+router.get('/prodcincuentisiete/edit/:id',  async (req, res) => {
+  const prodcincuentisiete = await Prodcincuentisiete.findById(req.params.id);
+  res.render('prodcincuentisiete/edit-prodcincuentisiete', { prodcincuentisiete });
 });
 
-router.post('/prodtres/edit/:id',  async (req, res) => {
+router.post('/prodcincuentisiete/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodtres.updateOne({_id: id}, req.body);
-  res.redirect('/prodtresback/1');
+  await Prodcincuentisiete.updateOne({_id: id}, req.body);
+  res.redirect('/prodcincuentisieteback/1');
 });
 
 
 
 
 // Delete 
-router.get('/prodtres/delete/:id', async (req, res) => {
+router.get('/prodcincuentisiete/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodtres.deleteOne({_id: id});
-  res.redirect('/prodtresback/1');
+    await Prodcincuentisiete.deleteOne({_id: id});
+  res.redirect('/prodcincuentisieteback/1');
 });
 
 
@@ -284,7 +284,7 @@ router.get('/prodtres/delete/:id', async (req, res) => {
 
 
 
-router.post("/filtroprodtres", function(req, res){
+router.post("/filtroprodcincuentisiete", function(req, res){
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
   let perPage = 15;
@@ -302,19 +302,19 @@ router.post("/filtroprodtres", function(req, res){
     }else{
       var flterParameter={}
   }
-  var prodtres = Prodtres.find(flterParameter);
-  prodtres
+  var prodcincuentisiete = Prodcincuentisiete.find(flterParameter);
+  prodcincuentisiete
   //.find( flterParameter) 
   .sort({ _id: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
   .exec((err, data) => {
-    prodtres.countDocuments((err, count) => {  
+    prodcincuentisiete.countDocuments((err, count) => {  
   //.exec(function(err,data){
       if(err) throw err;
-      res.render("prodtres/prodtres",
+      res.render("prodcincuentisiete/prodcincuentisiete",
       {
-        prodtres: data, 
+        prodcincuentisiete: data, 
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -328,12 +328,12 @@ router.post("/filtroprodtres", function(req, res){
 
 
 
-router.get('/prodtres/tallecolor/:id',  async (req, res) => {
+router.get('/prodcincuentisiete/tallecolor/:id',  async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  const prodtres = await Prodtres.findById(req.params.id);
-  res.render('prodtres/tallecolor-prodtres', { 
-    prodtres,
+  const prodcincuentisiete = await Prodcincuentisiete.findById(req.params.id);
+  res.render('prodcincuentisiete/tallecolor-prodcincuentisiete', { 
+    prodcincuentisiete,
     products: cart.generateArray(), totalPrice: cart.totalPrice
 
    });
@@ -341,10 +341,10 @@ router.get('/prodtres/tallecolor/:id',  async (req, res) => {
 
 
 
-router.post('/prodtres/tallecolor/:id',  async (req, res) => {
+router.post('/prodcincuentisiete/tallecolor/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodtres.updateOne({_id: id}, req.body);
-   const task = await Prodtres.findById(id);
+  await Prodcincuentisiete.updateOne({_id: id}, req.body);
+   const task = await Prodcincuentisiete.findById(id);
    task.status = !task.status;
    await task.save();
 
@@ -352,11 +352,11 @@ router.post('/prodtres/tallecolor/:id',  async (req, res) => {
 });
 
 
-router.get('/addtocardprodtres/:id', function(req, res, next){
+router.get('/addtocardprodcincuentisiete/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodtres.findById(productId,async function(err, product){
+  Prodcincuentisiete.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
