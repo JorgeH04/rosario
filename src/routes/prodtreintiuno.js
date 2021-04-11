@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 
-// Models
-const Prodveinticuatro = require('../models/prodveinticuatro');
+// Models  
+const Prodtreintiuno = require('../models/prodtreintiuno');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 
@@ -17,12 +17,11 @@ const { isAuthenticated } = require('../helpers/auth');
 /////////////////////////////////////////////////////////////////////7
 
 
-router.post('/prodveinticuatro/new-prodveinticuatro',  async (req, res) => {
+router.post('/prodtreintiuno/new-prodtreintiuno',  async (req, res) => {
   const { 
     name,
     title,
     image,
-    imageuno,
     imagedos,
     imagetres,
     imagecuatro,
@@ -89,11 +88,10 @@ router.post('/prodveinticuatro/new-prodveinticuatro',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodveinticuatro({ 
+    const newNote = new Prodtreintiuno({ 
       name,
       title,
       image,
-      imageuno,
       imagedos,
       imagetres,
       imagecuatro,
@@ -145,7 +143,7 @@ router.post('/prodveinticuatro/new-prodveinticuatro',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodveinticuatroback/1');
+    res.redirect('/prodtreintiunoback/1');
   }
 });
 
@@ -155,35 +153,35 @@ router.post('/prodveinticuatro/new-prodveinticuatro',  async (req, res) => {
 
 
 
-router.get('/erikah-detalles/:id', async (req, res) => {
+router.get('/olympian-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
-  const prodveinticuatro = await Prodveinticuatro.findById(id);
-  res.render('prodveinticuatro/prodveinticuatroredirect', {
-    prodveinticuatro,
+  const prodtreintiuno = await Prodtreintiuno.findById(id);
+  res.render('prodtreintiuno/prodtreintiunoredirect', {
+    prodtreintiuno,
     products: cart.generateArray(), totalPrice: cart.totalPrice
   });
 });
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/erikah/:page', async (req, res) => {
+router.get('/olympian/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-  let perPage = 15;
+   let perPage = 8;
   let page = req.params.page || 1;
 
-  Prodveinticuatro
+  Prodtreintiuno
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodveinticuatro) => {
-    Prodveinticuatro.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodtreintiuno) => {
+    Prodtreintiuno.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodveinticuatro/prodveinticuatro', {
-        prodveinticuatro,
+      res.render('prodtreintiuno/prodtreintiuno', {
+        prodtreintiuno,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -248,20 +246,20 @@ router.get("/search", function(req, res){
 
 
 
-router.get('/prodveinticuatroback/:page', async (req, res) => {
-  let perPage = 15;
+router.get('/prodtreintiunoback/:page', async (req, res) => {
+  let perPage = 8;
   let page = req.params.page || 1;
 
-  Prodveinticuatro
+  Prodtreintiuno
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodveinticuatro) => {
-    Prodveinticuatro.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodtreintiuno) => {
+    Prodtreintiuno.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodveinticuatro/new-prodveinticuatro', {
-        prodveinticuatro,
+      res.render('prodtreintiuno/new-prodtreintiuno', {
+        prodtreintiuno,
         current: page,
         pages: Math.ceil(count / perPage)
       });
@@ -333,84 +331,49 @@ router.get("/searchback", function(req, res){
 //editar
  
 
-router.get('/prodveinticuatro/edit/:id',  async (req, res) => {
-  const prodveinticuatro = await Prodveinticuatro.findById(req.params.id);
-  res.render('prodveinticuatro/edit-prodveinticuatro', { prodveinticuatro });
+router.get('/prodtreintiuno/edit/:id',  async (req, res) => {
+  const prodtreintiuno = await Prodtreintiuno.findById(req.params.id);
+  res.render('prodtreintiuno/edit-prodtreintiuno', { prodtreintiuno });
 });
 
-router.post('/prodveinticuatro/edit/:id',  async (req, res) => {
+router.post('/prodtreintiuno/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodveinticuatro.updateOne({_id: id}, req.body);
-  res.redirect('/prodveinticuatroback/:1');
+  await Prodtreintiuno.updateOne({_id: id}, req.body);
+  res.redirect('/prodtreintiunoback/:1');
 });
 
 
 
 
 // Delete 
-router.get('/prodveinticuatro/delete/:id', async (req, res) => {
+router.get('/prodtreintiuno/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodveinticuatro.deleteOne({_id: id});
-  res.redirect('/prodveinticuatroback/:1');
+    await Prodtreintiuno.deleteOne({_id: id});
+  res.redirect('/prodtreintiunoback/:1');
 });
 
 
 
 
 
- 
 
-router.get('/prodveinticuatro/tallecolor/:id',  async (req, res) => {
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
-  const prodveinticuatro = await Prodveinticuatro.findById(req.params.id);
-  res.render('prodveinticuatro/tallecolor-prodveinticuatro', { 
-    prodveinticuatro,
-    products: cart.generateArray(), totalPrice: cart.totalPrice
-
-   });
-});
-
-
-
-router.post('/prodveinticuatro/tallecolor/:id',  async (req, res) => {
-  const { id } = req.params;
-  await Prodveinticuatro.updateOne({_id: id}, req.body);
-   const task = await Prodveinticuatro.findById(id);
-   task.status = !task.status;
-   await task.save();
-
-  res.redirect('/clubmaster-clubround-detalles/' + id);
-});
-
-
-router.get('/addtocardprodveinticuatro/:id', function(req, res, next){
+router.get('/addtocardprodtreintiuno/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveinticuatro.findById(productId,async function(err, product){
+  Prodtreintiuno.findById(productId, function(err, product){
     if(err){
       return res-redirect('/');
     }
-
-
-    if(product.status == true) {
-
-      cart.add(product, product.id);
-      req.session.cart = cart;
-      product.status = !product.status;
-      await product.save();
-   }else{
-      req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/clubmaster-clubround-detalles/' + productId);
-   }
-
-
+    cart.add(product, product.id);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    req.flash('success', 'Producto agregado al carro exitosamente');
+    //res.redirect('/prodsieteredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
 
- 
 
 
 module.exports = router;

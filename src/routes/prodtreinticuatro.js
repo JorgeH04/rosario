@@ -153,7 +153,7 @@ router.post('/prodtreinticuatro/new-prodtreinticuatro',  async (req, res) => {
 
 
 
-router.get('/prodtreinticuatroredirect/:id', async (req, res) => {
+router.get('/wingsh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -166,7 +166,7 @@ router.get('/prodtreinticuatroredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodtreinticuatroindex/:page', async (req, res) => {
+router.get('/wingsh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

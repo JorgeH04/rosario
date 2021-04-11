@@ -153,7 +153,7 @@ router.post('/prodtreintitres/new-prodtreintitres',  async (req, res) => {
 
 
 
-router.get('/prodtreintitresredirect/:id', async (req, res) => {
+router.get('/signet-square-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -166,7 +166,7 @@ router.get('/prodtreintitresredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodtreintitresindex/:page', async (req, res) => {
+router.get('/signet-square/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

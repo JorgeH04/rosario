@@ -155,7 +155,7 @@ router.post('/prodveintiocho/new-prodveintiocho',  async (req, res) => {
 
 
 
-router.get('/prodveintiochoredirect/:id', async (req, res) => {
+router.get('/generalh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -168,7 +168,7 @@ router.get('/prodveintiochoredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodveintiochoindex/:page', async (req, res) => {
+router.get('/generalh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;
