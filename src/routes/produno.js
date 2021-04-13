@@ -233,7 +233,7 @@ router.post('/produno/new-produno',  async (req, res) => {
 router.get('/produnoback/:page', async (req, res) => {
 
 
-  let perPage =12;
+  let perPage =20;
   let page = req.params.page || 1;
 
   Produno 
