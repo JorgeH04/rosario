@@ -69,6 +69,7 @@ router.post('/prodtres/new-prodtres',  async (req, res) => {
     filtroprice,
     enstock,
     color,
+    coloruno,
     colordos,
     colortres,
     colorcuatro,
