@@ -252,13 +252,13 @@ router.get('/proddiecinueveback/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  proddiecinueve
+  Proddiecinueve
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
   .exec((err, proddiecinueve) => {
-    proddiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
+    Proddiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
       res.render('proddiecinueve/new-proddiecinueve', {
         proddiecinueve,
