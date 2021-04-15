@@ -247,12 +247,12 @@
                             <div class="col-12 bg-white text-center h-100 product-item">
                                 <div class="row h-100">
                                     <div class="col-12 p-0 mb-3">
-                                        <a href="/prodtreintaiunoredirect/<%= produn.id %>">
-                                            <img src="<%= produn.color %>" class="img-fluid">
+                                        <a  >
+                                            <img src="<%= produn.image %>" class="img-fluid">
                                         </a>
                                     </div>
                                     <div class="col-12 mb-3">
-                                          <%= produn.title %> 
+                                          <%= produn.title %> <br>  <%= produn.talleuno %> 
                                     </div>
                                     <div class="col-12 mb-3">
                                             <span class="product-price-old">
@@ -260,10 +260,10 @@
                                             </span>
                                         
                                     </div>
-                                    <a class="btn btn-danger" href="/prodtreintaiuno/delete/<%= produn.id %>">
+                                    <a class="btn btn-danger" href="/prodtreintiuno/delete/<%= produn.id %>">
                                         Eliminar
                                     </a>
-                                    <a class="btn btn-primary" href="/prodtreintaiuno/edit/<%= produn.id %>">
+                                    <a class="btn btn-primary" href="/prodtreintiuno/edit/<%= produn.id %>">
                                         Editar
                                     </a>
                                 </div>
@@ -300,7 +300,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaiunoback/1">First</a>
+                                <a class="page-link" href="/prodtreintiunoback/1">First</a>
                               </li>
                             <% } %>
                             <!-- ITEMS  -->
@@ -319,7 +319,7 @@
                                 </li>
                               <% } else { %>
                                 <li class="page-item">
-                                  <a class="page-link" href="/prodtreintaiunoback/<%= i %>">
+                                  <a class="page-link" href="/prodtreintiunoback/<%= i %>">
                                     <%= i %>
                                   </a>
                                 </li>
@@ -339,7 +339,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaiunoback/<%= pages %>">
+                                <a class="page-link" href="/prodtreintiunoback/<%= pages %>">
                                   Last
                                 </a>
                               </li>
