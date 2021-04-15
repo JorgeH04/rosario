@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Models
-const Prodiecinueve = require('../models/proddiecinueve');
+const Proddiecinueve = require('../models/proddiecinueve');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 
@@ -17,7 +17,7 @@ const { isAuthenticated } = require('../helpers/auth');
 /////////////////////////////////////////////////////////////////////7
 
 
-router.post('/prodiecinueve/new-prodiecinueve',  async (req, res) => {
+router.post('/proddiecinueve/new-proddiecinueve',  async (req, res) => {
   const { 
     name,
     title,
@@ -89,7 +89,7 @@ router.post('/prodiecinueve/new-prodiecinueve',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodiecinueve({ 
+    const newNote = new Proddiecinueveback({ 
       name,
       title,
       image,
@@ -145,7 +145,7 @@ router.post('/prodiecinueve/new-prodiecinueve',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodiecinueveback/1');
+    res.redirect('/proddiecinueveback/1');
   }
 });
 
@@ -155,35 +155,35 @@ router.post('/prodiecinueve/new-prodiecinueve',  async (req, res) => {
 
 
 
-router.get('/prodiecinueveredirect/:id', async (req, res) => {
+router.get('/proddiecinueveredirect/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
-  const prodiecinueve = await Prodiecinueve.findById(id);
-  res.render('prodiecinueve/prodiecinueveredirect', {
-    prodiecinueve,
+  const proddiecinueve = await Proddiecinueve.findById(id);
+  res.render('proddiecinueve/proddiecinueveredirect', {
+    proddiecinueve,
     products: cart.generateArray(), totalPrice: cart.totalPrice
   });
 });
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodiecinueveindex/:page', async (req, res) => {
+router.get('/proddiecinueveindex/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodiecinueve
+  Proddiecinueve
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodiecinueve) => {
-    Prodiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, proddiecinueve) => {
+    Proddiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodiecinueve/prodiecinueve', {
-        prodiecinueve,
+      res.render('proddiecinueve/proddiecinueve', {
+        proddiecinueve,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -252,16 +252,16 @@ router.get('/proddiecinueveback/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodiecinueve
+  proddiecinueve
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodiecinueve) => {
-    Prodiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, proddiecinueve) => {
+    proddiecinueve.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodiecinueve/new-prodiecinueve', {
-        prodiecinueve,
+      res.render('proddiecinueve/new-proddiecinueve', {
+        proddiecinueve,
         current: page,
         pages: Math.ceil(count / perPage)
       });
@@ -333,25 +333,25 @@ router.get("/searchback", function(req, res){
 //editar
  
 
-router.get('/prodiecinueve/edit/:id',  async (req, res) => {
-  const prodiecinueve = await Prodiecinueve.findById(req.params.id);
-  res.render('prodiecinueve/edit-prodiecinueve', { prodiecinueve });
+router.get('/proddiecinueve/edit/:id',  async (req, res) => {
+  const proddiecinueve = await Proddiecinueve.findById(req.params.id);
+  res.render('proddiecinueve/edit-proddiecinueve', { proddiecinueve });
 });
 
-router.post('/prodiecinueve/edit/:id',  async (req, res) => {
+router.post('/proddiecinueve/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodiecinueve.updateOne({_id: id}, req.body);
-  res.redirect('/prodiecinueveback/:1');
+  await Proddiecinueve.updateOne({_id: id}, req.body);
+  res.redirect('/proddiecinueveback/:1');
 });
 
 
 
 
 // Delete 
-router.get('/prodiecinueve/delete/:id', async (req, res) => {
+router.get('/proddiecinueve/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodiecinueve.deleteOne({_id: id});
-  res.redirect('/prodiecinueveback/:1');
+    await Proddiecinueve.deleteOne({_id: id});
+  res.redirect('/proddiecinueveback/:1');
 });
 
 
@@ -359,11 +359,11 @@ router.get('/prodiecinueve/delete/:id', async (req, res) => {
 
 
 
-router.get('/addtocardprodiecinueve/:id', function(req, res, next){
+router.get('/addtocardproddiecinueve/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodiecinueve.findById(productId, function(err, product){
+  Proddiecinueve.findById(productId, function(err, product){
     if(err){
       return res-redirect('/');
     }
