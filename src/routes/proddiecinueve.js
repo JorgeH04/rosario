@@ -89,7 +89,7 @@ router.post('/proddiecinueve/new-proddiecinueve',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Proddiecinueveback({ 
+    const newNote = new Proddiecinueve({ 
       name,
       title,
       image,
