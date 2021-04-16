@@ -31,6 +31,12 @@ const nodemailer = require('nodemailer');
 const Cart = require('../models/cart');
 const Order = require('../models/order');
 
+
+ 
+
+
+
+
 router.get('/', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 

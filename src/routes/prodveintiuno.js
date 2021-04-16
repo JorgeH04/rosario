@@ -144,7 +144,7 @@ router.post('/prodveintiuno/new-prodveintiuno',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodveintuno/1');
+    res.redirect('/prodveintunoback/1');
   }
 });
 
