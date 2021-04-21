@@ -993,7 +993,7 @@ input::-ms-clear {
   background-color: #fbfbfb; }
 
 .aspect--square {
-  padding-bottom: 100%; }
+  padding-bottom: 80%; }
 
 /*
   * Add this class inside '.aspect' child image element. If you want to make an image responsive then
