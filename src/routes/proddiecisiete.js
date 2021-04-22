@@ -344,7 +344,7 @@ router.get("/searchback", function(req, res){
 
 router.get('/proddiecisiete/edit/:id',  async (req, res) => {
   const proddiecisiete = await Proddiecisiete.findById(req.params.id);
-  res.render('proddiecisiete/edit-prodiecisiete', { proddiecisiete });
+  res.render('proddiecisiete/edit-proddiecisiete', { proddiecisiete });
 });
 
 router.post('/proddiecisiete/edit/:id',  async (req, res) => {
