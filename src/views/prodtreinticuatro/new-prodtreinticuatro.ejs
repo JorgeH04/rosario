@@ -33,11 +33,11 @@
   <div class="card text-center">
     <div class="card-header">
       <h3>Agregue un nuevo producto <br>
-           wings
+           wings hombre
       </h3>
     </div>
     <div class="card-body">
-      <form action="/prodtreintaicuatro/new-prodtreintaicuatro" method="POST">
+      <form action="/prodtreinticuatro/new-prodtreinticuatro" method="POST">
     <!--  <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="name" autofocus/>
           </div> --> 
@@ -240,7 +240,7 @@
                     </div>
                     
                     <div class="row">
-                          <% prodtreintaicuatro.forEach(function (produn) { %>
+                          <% prodtreinticuatro.forEach(function (produn) { %>
   
                         <!-- Product -->
                         <div class="col-xl-2 col-lg-3 col-sm-6 my-3">
@@ -260,10 +260,10 @@
                                             </span>
                                         
                                     </div>
-                                    <a class="btn btn-danger" href="/prodtreintaicuatro/delete/<%= produn.id %>">
+                                    <a class="btn btn-danger" href="/prodtreinticuatro/delete/<%= produn.id %>">
                                         Eliminar
                                     </a>
-                                    <a class="btn btn-primary" href="/prodtreintaicuatro/edit/<%= produn.id %>">
+                                    <a class="btn btn-primary" href="/prodtreinticuatro/edit/<%= produn.id %>">
                                         Editar
                                     </a>
                                 </div>
@@ -300,7 +300,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaicuatroback/1">First</a>
+                                <a class="page-link" href="/prodtreinticuatroback/1">First</a>
                               </li>
                             <% } %>
                             <!-- ITEMS  -->
@@ -319,7 +319,7 @@
                                 </li>
                               <% } else { %>
                                 <li class="page-item">
-                                  <a class="page-link" href="/prodtreintaicuatroback/<%= i %>">
+                                  <a class="page-link" href="/prodtreinticuatroback/<%= i %>">
                                     <%= i %>
                                   </a>
                                 </li>
@@ -339,7 +339,7 @@
                               </li>
                             <% } else { %>
                               <li class="page-item">
-                                <a class="page-link" href="/prodtreintaicuatroback/<%= pages %>">
+                                <a class="page-link" href="/prodtreinticuatroback/<%= pages %>">
                                   Last
                                 </a>
                               </li>
