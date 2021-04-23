@@ -154,7 +154,7 @@ router.post('/prodveintiuno/new-prodveintiuno',  async (req, res) => {
 
 
 
-router.get('/prodveintiunoredirect/:id', async (req, res) => {
+router.get('/cats-cocqpit-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -167,7 +167,7 @@ router.get('/prodveintiunoredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/prodveintiunoindex/:page', async (req, res) => {
+router.get('/cats-cocqpit/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;
