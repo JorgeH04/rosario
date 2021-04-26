@@ -307,7 +307,7 @@
                                       
                             
 											<% prodnueve.forEach(function (produn) { %>
-                                        <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="col-lg-3 col-md-6 col-sm-6 item  data-id=<%= produn.id %>">
                                             <div class="product-m">
                                                 <div class="product-m__thumb">
 
@@ -349,7 +349,7 @@
 															</span></div>
                                                         <div class="product-m__wishlist">
                                                                 <a  
-																class="<%= produn.like ? 'far fa-heart' : 'fas fa-heart' %>" 
+																class="<%= produn.like ? 'fas fa-heart' : 'far fa-heart' %>" 
 																href="/likeproduno/<%= produn.id %>" 
 																id="btn-like"  
 																data-id="<%= produn.id %>"
