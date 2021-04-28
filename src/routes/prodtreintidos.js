@@ -153,7 +153,7 @@ router.post('/prodtreintidos/new-prodtreintidos',  async (req, res) => {
 
 
 
-router.get('/round-detalles/:id', async (req, res) => {
+router.get('/roundh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -166,7 +166,7 @@ router.get('/round-detalles/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/round/:page', async (req, res) => {
+router.get('/roundh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
    let perPage = 8;

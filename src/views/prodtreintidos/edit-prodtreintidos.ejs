@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Actualizar productos</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/assets/packages/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/dist/assets/packages/owl-carousel/owl.theme.default.css">
+    <link rel="stylesheet" href="/dist/assets/packages/animate/animate.css">
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/o2system-venus-ui@1.1.0/dist/venus-ui.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="/dist/assets/css/theme.css">
+    <link rel="canonical" href="http://localhost:4000/index.html">
+</head>
+
+
+<body>
+
+        <a href="/prodtreintidosback/1" class="btn btn-primary " type="submit">
+            volver a inicio
+          </a>
+
+
+
+
+
+
+<div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3>Edite su producto</h3>
+      </div>
+      <div class="card-body">
+        <form action="/prodtreintidos/edit/<%= prodtreintidos._id %>" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+ 
+           <div class="form-group">
+              <input type="text" name="title" class="form-control" placeholder="title" value="<%= prodtreintidos.title %>" autofocus/>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="image" class="form-control" placeholder="imagen" value="<%= prodtreintidos.image %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageuno" class="form-control" placeholder="imagen 1" value="<%= prodtreintidos.imageuno %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagedos" class="form-control" placeholder="imagen 2" value="<%= prodtreintidos.imagedos %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagetres" class="form-control" placeholder="imagen 3" value="<%= prodtreintidos.imagetres %>" autofocus/>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="imagecuatro" class="form-control" placeholder="imagen 4" value="<%= prodtreintidos.imagecuatro %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagecinco" class="form-control" placeholder="imagen 5" value="<%= prodtreintidos.imagecinco %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageseis" class="form-control" placeholder="imagen 6" value="<%= prodtreintidos.imageseis %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagesiete" class="form-control" placeholder="imagen 7" value="<%= prodtreintidos.imagesiete %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageocho" class="form-control" placeholder="imagen 8" value="<%= prodtreintidos.imageocho %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagenueve" class="form-control" placeholder="imagen 9" value="<%= prodtreintidos.imagenueve %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagediez" class="form-control" placeholder="imagen 10" value="<%= prodtreintidos.imagediez %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageonce" class="form-control" placeholder="imagen 11" value="<%= prodtreintidos.imageonce %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagedoce" class="form-control" placeholder="imagen 12" value="<%= prodtreintidos.imagedoce %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagetrece" class="form-control" placeholder="imagen 13" value="<%= prodtreintidos.imagetrece %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagecatorce" class="form-control" placeholder="imagen 14" value="<%= prodtreintidos.imagecatorce %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagequince" class="form-control" placeholder="imagen 15" value="<%= prodtreintidos.imagequince %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagedieciseis" class="form-control" placeholder="imagen 16" value="<%= prodtreintidos.imagedieciseis %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagediecisiete" class="form-control" placeholder="imagen 17" value="<%= prodtreintidos.imagediecisiete %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagedieciocho" class="form-control" placeholder="imagen 18" value="<%= prodtreintidos.imagedieciocho %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imagediecinueve" class="form-control" placeholder="imagen 19" value="<%= prodtreintidos.imagediecinueve %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageveinte" class="form-control" placeholder="imagen 20" value="<%= prodtreintidos.imageveinte %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageveintiuno" class="form-control" placeholder="imagen 21" value="<%= prodtreintidos.imageveintiuno %>" autofocus/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="imageveintidos" class="form-control" placeholder="imagen 22" value="<%= prodtreintidos.imageveintidos %>" autofocus/>
+            </div>
+ 
+              <div class="form-group">
+                 <textarea type="text" name="description" class="form-control" placeholder="descripcion" ><%= prodtreintidos.description %>" </textarea>
+              </div>
+              <div class="form-group">
+                 <input type="text" name="enstock" class="form-control" placeholder="en stock?" value="<%= prodtreintidos.enstock %>" autofocus/>
+              </div>
+
+  
+               <div class="form-group">
+                  <input type="text" name="coloruno" class="form-control" placeholder="color 1" value="<%= prodtreintidos.coloruno %>" autofocus/>
+              </div>
+
+              <div class="form-group">
+                <input type="text" name="colordos" class="form-control" placeholder="color 2" value="<%= prodtreintidos.colordos %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colortres" class="form-control" placeholder="color 3" value="<%= prodtreintidos.colortres %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorcuatro" class="form-control" placeholder="color 4" value="<%= prodtreintidos.colorcuatro %>" autofocus/>
+              </div>
+  
+              <div class="form-group">
+                <input type="text" name="colorcinco" class="form-control" placeholder="color 5" value="<%= prodtreintidos.colorcinco %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorseis" class="form-control" placeholder="color 6" value="<%= prodtreintidos.colorseis %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorsiete" class="form-control" placeholder="color 7" value="<%= prodtreintidos.colorsiete %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorocho" class="form-control" placeholder="color 8" value="<%= prodtreintidos.colorocho %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colornueve" class="form-control" placeholder="color 9" value="<%= prodtreintidos.colornueve %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordiez" class="form-control" placeholder="color 10" value="<%= prodtreintidos.colordiez %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="coloronce" class="form-control" placeholder="color 11" value="<%= prodtreintidos.coloronce %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordoce" class="form-control" placeholder="color 12" value="<%= prodtreintidos.colordoce %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colortrece" class="form-control" placeholder="color 13" value="<%= prodtreintidos.colortrece %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorcatorce" class="form-control" placeholder="color 14" value="<%= prodtreintidos.colorcatorce %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colorquince" class="form-control" placeholder="color 15" value="<%= prodtreintidos.colorquince %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordieciseis" class="form-control" placeholder="color 16" value="<%= prodtreintidos.colordieciseis %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordiecisiete" class="form-control" placeholder="color 17" value="<%= prodtreintidos.colordiecisiete %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordieciocho" class="form-control" placeholder="color 18" value="<%= prodtreintidos.colordieciocho %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colordiecinueve" class="form-control" placeholder="color 19" value="<%= prodtreintidos.colordiecinueve %>" autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="talleuno" class="form-control" placeholder="talle" value="<%= prodtreintidos.talleuno %>" autofocus/>
+            </div>    
+              <div class="form-group"> 
+                <input type="text" name="price" class="form-control" placeholder="precio" value="<%= prodtreintidos.price %>"  autofocus/>
+              </div>
+              <div class="form-group"> 
+                <input type="text" name="oldprice" class="form-control" placeholder="precio anterior" value="<%= prodtreintidos.oldprice %>"  autofocus/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="talledos" class="form-control" placeholder="descuento" value="<%= prodtreintidos.talledos %>" autofocus/>
+            </div>  
+
+ 
+            
+          
+     
+  
+  
+       
+
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">
+              guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</body>
+</html>

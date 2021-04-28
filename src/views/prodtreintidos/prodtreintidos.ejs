@@ -236,13 +236,13 @@
                                     
                                       
                             
-											<% prodtreintaidos.forEach(function (produn) { %>
+											<% prodtreintidos.forEach(function (produn) { %>
                                         <div class="col-lg-3 col-md-6 col-sm-6 item  data-id=<%= produn.id %>">
                                             <div class="product-m">
                                                 <div class="product-m__thumb">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" 
-                                                       href="/round-detalles/<%= produn.id %>">
+                                                       href="/roundh-detalles/<%= produn.id %>">
 
                                                         <img class="aspect__img" src="<%= produn.image %>" alt="">
                                                     </a>
@@ -254,7 +254,7 @@
                                                     </div>
                                                     <div class="product-m__add-cart">
 
-														<a href="/round-detalles/<%= produn.id %>"
+														<a href="/roundh-detalles/<%= produn.id %>"
 														class="btn--e-brand">Ver detalles</a></div>
                                                 </div>
                                                 <div class="product-m__content">
@@ -280,7 +280,7 @@
                                                         <div class="product-m__wishlist">
                                                                 <a  
 																class="<%= produn.like ? 'fas fa-heart' : 'far fa-heart' %>" 
-																href="/likeprodtreintaidos/<%= produn.id %>" 
+																href="/likeprodtreintidos/<%= produn.id %>" 
 																id="btn-like"  
 																data-id="<%= produn.id %>"
 																title="Add to Wishlist">
@@ -311,7 +311,7 @@
                                               </li>
                                             <% } else { %>
                                               <li class="page-item">
-                                                <a class="page-link" href="/round/1">First</a>
+                                                <a class="page-link" href="/roundh/1">First</a>
                                               </li>
                                             <% } %>
                                             <!-- ITEMS  -->
@@ -330,7 +330,7 @@
                                                 </li>
                                               <% } else { %>
                                                 <li class="page-item">
-                                                  <a class="page-link" href="/round/<%= i %>">
+                                                  <a class="page-link" href="/roundh/<%= i %>">
                                                     <%= i %>
                                                   </a>
                                                 </li>
@@ -350,7 +350,7 @@
                                               </li>
                                             <% } else { %>
                                               <li class="page-item">
-                                                <a class="page-link" href="/round/<%= pages %>">
+                                                <a class="page-link" href="/roundh/<%= pages %>">
                                                   Last
                                                 </a>
                                               </li>
