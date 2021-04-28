@@ -340,7 +340,7 @@ router.get('/prodveintiuno/edit/:id',  async (req, res) => {
 router.post('/prodveintiuno/edit/:id',  async (req, res) => {
   const { id } = req.params;
   await Prodveintiuno.updateOne({_id: id}, req.body);
-  res.redirect('/prodveintiuno/:1');
+  res.redirect('/prodveintiunoback/:1');
 });
 
 

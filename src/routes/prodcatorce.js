@@ -250,7 +250,7 @@ router.get("/search", function(req, res){
 
 
 router.get('/prodcatorceback/:page', async (req, res) => {
-  let perPage = 15;
+  let perPage = 20;
   let page = req.params.page || 1;
 
   Prodcatorce
