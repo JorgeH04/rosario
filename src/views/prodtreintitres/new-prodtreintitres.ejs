@@ -37,7 +37,7 @@
       </h3>
     </div>
     <div class="card-body">
-      <form action="/prodtreintaitres/new-prodtreintaitres" method="POST">
+      <form action="/prodtreintitres/new-prodtreintitres" method="POST">
     <!--  <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="name" autofocus/>
           </div> --> 
@@ -239,15 +239,15 @@
                     </div>
                     
                     <div class="row">
-                          <% prodtreintaitres.forEach(function (produn) { %>
+                          <% prodtreintitres.forEach(function (produn) { %>
   
                         <!-- Product -->
                         <div class="col-xl-2 col-lg-3 col-sm-6 my-3">
                             <div class="col-12 bg-white text-center h-100 product-item">
                                 <div class="row h-100">
                                     <div class="col-12 p-0 mb-3">
-                                        <a href="/prodtreintaitresredirect/<%= produn.id %>">
-                                            <img src="<%= produn.color %>" class="img-fluid">
+                                        <a>
+                                            <img src="<%= produn.image %>" class="img-fluid">
                                         </a>
                                     </div>
                                     <div class="col-12 mb-3">
@@ -259,10 +259,10 @@
                                             </span>
                                         
                                     </div>
-                                    <a class="btn btn-danger" href="/prodtreintaitres/delete/<%= produn.id %>">
+                                    <a class="btn btn-danger" href="/prodtreintitres/delete/<%= produn.id %>">
                                         Eliminar
                                     </a>
-                                    <a class="btn btn-primary" href="/prodtreintaitres/edit/<%= produn.id %>">
+                                    <a class="btn btn-primary" href="/prodtreintitres/edit/<%= produn.id %>">
                                         Editar
                                     </a>
                                 </div>
