@@ -321,6 +321,17 @@ router.get('/pagosyenvios', async (req, res) => {
 
 
 
+router.get('/originales-imitacion', async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  res.render('originaleseimitacion', {
+
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+  });
+});
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
