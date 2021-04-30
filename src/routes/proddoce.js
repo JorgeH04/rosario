@@ -416,30 +416,25 @@ router.post("/filtroproddoce", function(req, res){
 router.get('/addtocardproddoce/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+
   Proddoce.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/justin-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });

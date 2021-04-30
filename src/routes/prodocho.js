@@ -461,7 +461,7 @@ router.get('/addtocardprodocho/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/cats-gatsby-detalles/' + productId);
+      res.redirect('/erika-detalles/' + productId);
    }
 
 

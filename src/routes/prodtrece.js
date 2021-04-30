@@ -371,30 +371,25 @@ router.get('/likeprodtrece/:id', async (req, res, next) => {
 router.get('/addtocardprodtrece/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+
   Prodtrece.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/jackieohh-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
