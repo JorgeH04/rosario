@@ -349,6 +349,8 @@ router.post('/prodcuatro/tallecolor/:id',  async (req, res) => {
 });
 
 
+
+
 router.get('/addtocardprodcuatro/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
@@ -367,16 +369,16 @@ router.get('/addtocardprodcuatro/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/clubmaster-detalles/' + productId);
+      res.redirect('/clubround-detalles/' + productId);
    }
 
 
+    console.log(req.session.cart);
+   // req.flash('success', 'Producto agregado al carro exitosamente');
+    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
-
-
-
 
 
 module.exports = router;

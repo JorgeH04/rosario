@@ -375,9 +375,17 @@ router.get('/addtocardprodtres/:id', function(req, res, next){
    }
 
 
+    console.log(req.session.cart);
+   // req.flash('success', 'Producto agregado al carro exitosamente');
+    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
+
+
+
+
+ 
 
 
 
