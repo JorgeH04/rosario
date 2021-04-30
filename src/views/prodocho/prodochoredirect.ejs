@@ -96,6 +96,7 @@
          
                                              <img class="u-img-fluid" src="<%= prodocho.imagediecinueve %>" data-zoom-image="<%= prodocho.imagediecinueve %>" alt=""></div>
                                                            <div class="pd-o-img-wrap" data-src="<%= prodocho.imagediecinueve %>">
+                                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" data-zoom-image="images/product/product-d-5.jpg" alt=""></div>
                                         </div>
     
                                         <span class="pd-text"> </span> 
@@ -105,7 +106,7 @@
                                             <div id="pd-o-thumbnail">
                                                 <div>
     
-                                                    <img class="u-img-fluid" src="<%= prodocho.image %>" alt=""></div>
+                                                    <img class="u-img-fluid" src="<%= prodocho.imageuno %>" alt=""></div>
                                                 <div>
     
                                                     <img class="u-img-fluid" src="<%= prodocho.imagedos %>" alt=""></div>
@@ -201,7 +202,9 @@
                                                  <div>
         
                                                         <img class="u-img-fluid" src="<%= prodocho.imagediecinueve %>" alt="">
-                                                </div> 
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +217,7 @@
                                 <div class="pd-detail">
                                     <div>
     
-                                        <span class="pd-detail__name"><%= prodocho.title %></span></div>
+                                        <span class="pd-detail__name"><h2><%= prodocho.title %></h2></span></div>
                                     <div>
                                         <div class="pd-detail__inline">
     
@@ -223,19 +226,19 @@
                                             <span class="pd-detail__discount"></span><del class="pd-detail__del">$ <%= prodocho.oldprice %></del></div>
                                     </div>
                                     <div class="u-s-m-b-15">
-                                            <div class="pd-detail__rating gl-rating-style">
-                                                    <h5>
-                                                            Todos los medios de pago
-                                                    </h5>
-                                                <span class="pd-detail__review u-s-m-l-4">
-                                                       
-                                                    <img  src="https://res.cloudinary.com/dsk4fft6r/image/upload/c_scale,w_80/v1614647515/png-transparent-visa-mastercard-logos-mastercard-discover-card-payment-american-express-visa-visa-master-card-text-logo-payment_opwmyx.png" alt=""></div>
-                                                    <a data-click-scroll="#view-review"></a>
-    
-                                                </span>
-    
-                                            </div>
+                                        <div class="pd-detail__rating gl-rating-style">
+                                                <h5>
+                                                        Todos los medios de pago
+                                                </h5>
+                                            <span class="pd-detail__review u-s-m-l-4">
+                                                   
+                                                <img  src="https://res.cloudinary.com/dsk4fft6r/image/upload/c_scale,w_80/v1614647515/png-transparent-visa-mastercard-logos-mastercard-discover-card-payment-american-express-visa-visa-master-card-text-logo-payment_opwmyx.png" alt=""></div>
+                                                <a data-click-scroll="#view-review"></a>
+
+                                            </span>
+
                                         </div>
+                                    </div>
                                     <div class="u-s-m-b-15">
                                         <div class="pd-detail__inline">
                                                 <span class="pd-detail__stock"><%= prodocho.enstock %></span>
@@ -243,8 +246,37 @@
                                     </div>
                                     <div class="u-s-m-b-15">
     
-                                        <span class="pd-detail__preview-desc">
-                                                <%= prodocho.description %>.</span></div>
+                                        <span class="pd-detail__preview-desc" style="white-space: pre-wrap;">
+                                                <%= prodocho.description %>.
+                                        </span>
+                                    </div>
+
+                                    <div class="u-s-m-b-15">
+
+                                            <span class="pd-detail__label u-s-m-b-8">Presione aquí para elegir su talle y Color:</span>
+                                            <div class="pd-detail__size">
+                                                <div class="size__radio">
+                                                    <label class="size__radio-label" for="xs" style="background-color:blue; color:aliceblue">
+                                                            <a href="/prodocho/tallecolor/<%= prodocho.id %>" style=" color:aliceblue"> 
+                                                        Elegir color</a> 
+                                                    </label>
+                                                </div>
+                                               
+                                                 
+                                               
+                                            </div>
+                                        </div>
+
+
+
+                                 
+
+
+
+
+
+
+
                                     <div class="u-s-m-b-15">
                                         <div class="quick">
                                                 <div class="pd-detail__inline">
@@ -258,36 +290,10 @@
                                                                 Agregar a favoritos
                                                              <span class="pd-detail__click-count"></span></span>
                                                     </div>
+                                            </a>
                                     </div>
                                 </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-    
-                                            <span class="pd-detail__click-wrap">
-    
-                                            </div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <ul class="pd-social-list">
-
-                                            <!--     <li>
-    
-                                                        <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li>
-            
-                                                        <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li>
-            
-                                                        <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
-                                                    <li>
-            
-                                                        <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                                    <li>
-            
-                                                        <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
-                                            
-                                        </ul>
-                                    </div>
+                              
                                     <div class="u-s-m-b-15">
                                         <form class="pd-detail__form">
                                             <div class="pd-detail-inline-2">
@@ -303,7 +309,7 @@
                                                         <span class="input-counter__plus fas fa-plus"></span></div>
                                                     <!--====== End - Input Counter ======-->
                                                 </div>
-
+                                      
                                                 <div class="u-s-m-b-15">
     
                                                     <a href="/addtocardprodocho/<%= prodocho.id %>"  
@@ -313,6 +319,14 @@
                                             </div>
                                         </form>
                                     </div>
+
+
+
+
+
+
+
+                                    
                                     <div class="u-s-m-b-15">
     
                                         <span class="pd-detail__label u-s-m-b-8"></span>
@@ -634,3 +648,7 @@
 
 
 <% include ../partials/_footer %>
+
+
+
+
