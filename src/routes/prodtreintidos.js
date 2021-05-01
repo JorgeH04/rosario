@@ -169,7 +169,7 @@ router.get('/roundh-detalles/:id', async (req, res) => {
 router.get('/roundh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
-   let perPage = 8;
+   let perPage = 20;
   let page = req.params.page || 1;
 
   Prodtreintidos
@@ -196,7 +196,7 @@ router.get('/roundh/:page', async (req, res) => {
 
 
 router.get("/search", function(req, res){
-  let perPage = 8;
+  let perPage = 20;
   let page = req.params.page || 1;
 
   var noMatch = null;
