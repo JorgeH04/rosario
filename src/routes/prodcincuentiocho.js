@@ -40,7 +40,7 @@ const SECRET_KEY = 'sk_test_rCp23dn4fDasEqfGiVkhHvii00SyEkd4GS'
 
 /////////////////////////////////////////front//////////////////////////////////////////////////
 
-router.get('/aviador/:page', async (req, res) => {
+router.get('/tarjetaderegalo/:page', async (req, res) => {
 
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
@@ -71,7 +71,7 @@ router.get('/aviador/:page', async (req, res) => {
 
 
 
-router.get('/aviador-detalles/:id', async (req, res) => {
+router.get('/tarjetaderegalo-detalles/:id', async (req, res) => {
   const { id } = req.params;
   const prodcincuentiocho = await Prodcincuentiocho.findById(id);
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
