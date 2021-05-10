@@ -345,7 +345,7 @@ router.post('/prodcuatro/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/clubmaster-detalles/' + id);
+  res.redirect('/clubround-detalles/' + id);
 });
 
 

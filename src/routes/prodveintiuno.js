@@ -358,19 +358,32 @@ router.get('/prodveintiuno/delete/:id', async (req, res) => {
 
 
 
+ 
+
+
+
 router.get('/addtocardprodveintiuno/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveintiuno.findById(productId, function(err, product){
+  Prodveintiuno.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/caravan-colonel-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });

@@ -329,8 +329,12 @@ router.get('/proddiecinueve/tallecolor/:id',  async (req, res) => {
 
 router.post('/proddiecinueve/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Proddiecinueve.updateOne({_id: id}, req.body);
+   const task = await Produno.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/blazeh-detalles/' + id);
 });
 

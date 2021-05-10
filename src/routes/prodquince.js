@@ -332,8 +332,12 @@ router.get('/prodquince/tallecolor/:id',  async (req, res) => {
 
 router.post('/prodquince/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Prodquince.updateOne({_id: id}, req.body);
+   const task = await Prodquince.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/square-detalles/' + id);
 });
 

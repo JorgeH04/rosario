@@ -357,16 +357,7 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
-
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+ 
 
 
 
@@ -430,7 +421,7 @@ router.post('/prodveinte/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/aviadorh-detalles/' + id);
+  res.redirect('/caravan-colonel-detalles/' + id);
 });
 
 
@@ -452,7 +443,7 @@ router.get('/addtocardprodveinte/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/aviadorh-detalles/' + productId);
+      res.redirect('/caravan-colonel-detalles/' + productId);
    }
 
 

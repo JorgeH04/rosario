@@ -330,8 +330,12 @@ router.get('/prodcatorce/tallecolor/:id',  async (req, res) => {
 
 router.post('/prodcatorce/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Prodcatorce.updateOne({_id: id}, req.body);
+   const task = await Prodcatorce.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/jajo-round-detalles/' + id);
 });
 

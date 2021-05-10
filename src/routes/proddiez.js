@@ -331,8 +331,12 @@ router.get('/proddiez/tallecolor/:id',  async (req, res) => {
 
 router.post('/proddiez/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Proddiez.updateOne({_id: id}, req.body);
+   const task = await Proddiez.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/proddiezredirect/' + id);
 });
 

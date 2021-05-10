@@ -341,9 +341,13 @@ router.get('/prodnueve/tallecolor/:id',  async (req, res) => {
 
 router.post('/prodnueve/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Prodnueve.updateOne({_id: id}, req.body);
-  res.redirect('/prodnueveredirect/' + id);
+   const task = await Prodnueve.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/geometricos-detalles/' + id);
 });
 
 

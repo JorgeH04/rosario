@@ -341,8 +341,12 @@ router.get('/prodsiete/tallecolor/:id',  async (req, res) => {
 
 router.post('/prodsiete/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Prodsiete.updateOne({_id: id}, req.body);
+   const task = await Prodsiete.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/chris-cocqpit-detalles/' + id);
 });
 

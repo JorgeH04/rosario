@@ -392,21 +392,7 @@ router.get("/searchback", function(req, res){
 });
 
 
-///////////////////////////////////////////////////////////////////////7
-
-
-// // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
-
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
-
+ 
 
 
 
@@ -439,36 +425,7 @@ router.get('/proddieciseis/delete/:id', async (req, res) => {
 
 
 
-router.get('/addtocardproddieciseis/:id', function(req, res, next){
-  var productId = req.params.id;
-  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-  Proddieciseis.findById(productId,async function(err, product){
-    if(err){
-      return res-redirect('/');
-    }
-
-
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
-      cart.add(product, product.id);
-      req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
-
-
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
-    res.redirect('/shopcart');
-  });
-});
+ 
 
 
 
@@ -477,7 +434,7 @@ router.get('/addtocardproddieciseis/:id', function(req, res, next){
 
 
   
-
+//talllecolor
 
 router.get('/proddieciseis/tallecolor/:id',  async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});

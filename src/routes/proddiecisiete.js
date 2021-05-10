@@ -338,8 +338,12 @@ router.get('/proddiecisiete/tallecolor/:id',  async (req, res) => {
 
 router.post('/proddiecisiete/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Proddiecisiete.updateOne({_id: id}, req.body);
+   const task = await Proddiecisiete.findById(id);
+   task.status = !task.status;
+   await task.save();
   res.redirect('/wings-detalles/' + id);
 });
 

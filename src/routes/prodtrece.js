@@ -330,10 +330,17 @@ router.get('/prodtrece/tallecolor/:id',  async (req, res) => {
 
 router.post('/prodtrece/tallecolor/:id',  async (req, res) => {
 
+
   const { id } = req.params;
   await Prodtrece.updateOne({_id: id}, req.body);
+   const task = await Prodtrece.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+ 
   res.redirect('/jackieohh-detalles/' + id);
 });
+ 
 
 
 
