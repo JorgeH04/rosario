@@ -316,17 +316,17 @@ router.get("/searchback", function(req, res){
 ///////////////////////////////////////////////////////////////////////7
 
 
-// // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+// talle y color
+router.get('/prodonce/tallecolor/:id',  async (req, res) => {
+  const prodonce = await Prodonce.findById(req.params.id);
+  res.render('prodonce/tallecolor-prodonce', { prodonce });
+});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.post('/prodonce/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodonce.updateOne({_id: id}, req.body);
+  res.redirect('/prodonceredirect/' + id);
+});
 
 
 
