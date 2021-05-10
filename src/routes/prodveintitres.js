@@ -315,17 +315,28 @@ router.get("/searchback", function(req, res){
 ///////////////////////////////////////////////////////////////////////7
 
 
-// // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+// // talle y color 
+router.get('/prodveintitres/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodveintitres = await Prodveintitres.findById(req.params.id);
+  res.render('prodveintitres/tallecolor-prodveintitres', { 
+    prodveintitres,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodveintitres/tallecolor/:id',  async (req, res) => {
+
+
+  const { id } = req.params;
+  await Prodveintitres.updateOne({_id: id}, req.body);
+   const task = await Prodveintitres.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/chris-detalles/' + id);
+});
 
 
 
@@ -358,23 +369,35 @@ router.get('/prodveintitres/delete/:id', async (req, res) => {
 
 
 
+ 
+
 
 router.get('/addtocardprodveintitres/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveintitres.findById(productId, function(err, product){
+  Prodveintitres.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/chris-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
 
 
 

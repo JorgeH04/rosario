@@ -315,16 +315,27 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodveintiuno/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodveintiuno = await Prodveintiuno.findById(req.params.id);
+  res.render('prodveintiuno/tallecolor-prodveintiuno', { 
+    prodveintiuno,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodveintiuno/tallecolor/:id',  async (req, res) => {
+
+
+  const { id } = req.params;
+  await Prodveintiuno.updateOne({_id: id}, req.body);
+   const task = await Prodveintiuno.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/caravan-colonel-detalles/' + id);
+});
 
 
 

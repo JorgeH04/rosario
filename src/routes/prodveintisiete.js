@@ -317,16 +317,27 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodveintisiete/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodveintisiete = await Prodveintisiete.findById(req.params.id);
+  res.render('prodveintisiete/tallecolor-prodveintisiete', { 
+    prodveintisiete,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodveintisiete/tallecolor/:id',  async (req, res) => {
+
+
+  const { id } = req.params;
+  await Prodveintisiete.updateOne({_id: id}, req.body);
+   const task = await Prodveintisiete.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/geometrica-detalles/' + id);
+});
 
 
 
@@ -360,19 +371,31 @@ router.get('/prodveintisiete/delete/:id', async (req, res) => {
 
 
 
+ 
+
+
 router.get('/addtocardprodveintisiete/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodveintisiete.findById(productId, function(err, product){
+  Prodveintisiete.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/geometrica-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
