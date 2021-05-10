@@ -317,17 +317,23 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodtrece/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodtrece = await Prodtrece.findById(req.params.id);
+  res.render('prodtrece/tallecolor-prodtrece', { 
+    prodtrece,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
 
+   });
+});
+
+router.post('/prodtrece/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Prodtrece.updateOne({_id: id}, req.body);
+  res.redirect('/jackieohh-detalles/' + id);
+});
 
 
 

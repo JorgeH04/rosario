@@ -319,16 +319,23 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodquince/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodquince = await Prodquince.findById(req.params.id);
+  res.render('prodquince/tallecolor-prodquince', { 
+    prodquince,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodquince/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Prodquince.updateOne({_id: id}, req.body);
+  res.redirect('/square-detalles/' + id);
+});
 
 
 

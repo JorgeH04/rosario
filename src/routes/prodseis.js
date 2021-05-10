@@ -327,16 +327,24 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.get('/prodseis/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodseis = await Prodseis.findById(req.params.id);
+  res.render('prodseis/tallecolor-prodseis', { 
+    prodseis,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodseis/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Prodseis.updateOne({_id: id}, req.body);
+  res.redirect('/cateye-detalles/' + id);
+});
 
 
 

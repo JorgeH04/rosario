@@ -317,17 +317,23 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodcatorce/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodcatorce = await Prodcatorce.findById(req.params.id);
+  res.render('prodcatorce/tallecolor-prodcatorce', { 
+    prodcatorce,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
 
+   });
+});
+
+router.post('/prodcatorce/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Prodcatorce.updateOne({_id: id}, req.body);
+  res.redirect('/jajo-round-detalles/' + id);
+});
 
 
 

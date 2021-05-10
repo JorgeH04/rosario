@@ -327,16 +327,24 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.get('/prodnueve/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+  const prodnueve = await Prodnueve.findById(req.params.id);
+  res.render('prodnueve/tallecolor-prodnueve', { 
+    prodnueve,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/prodnueve/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Prodnueve.updateOne({_id: id}, req.body);
+  res.redirect('/prodnueveredirect/' + id);
+});
 
 
 
@@ -352,7 +360,7 @@ router.get('/prodnueve/edit/:id',  async (req, res) => {
 router.post('/prodnueve/edit/:id',  async (req, res) => {
   const { id } = req.params;
   await Prodnueve.updateOne({_id: id}, req.body);
-  res.redirect('/prodnueveback/:1');
+  res.redirect('/geometricos-detalles/:1');
 });
 
 
