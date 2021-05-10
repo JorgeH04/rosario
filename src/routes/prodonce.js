@@ -318,11 +318,18 @@ router.get("/searchback", function(req, res){
 
 // talle y color
 router.get('/prodonce/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
   const prodonce = await Prodonce.findById(req.params.id);
-  res.render('prodonce/tallecolor-prodonce', { prodonce });
+  res.render('prodonce/tallecolor-prodonce', { 
+    prodonce,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
 });
 
 router.post('/prodonce/tallecolor/:id',  async (req, res) => {
+
   const { id } = req.params;
   await Prodonce.updateOne({_id: id}, req.body);
   res.redirect('/prodonceredirect/' + id);
