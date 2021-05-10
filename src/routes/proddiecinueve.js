@@ -155,7 +155,7 @@ router.post('/proddiecinueve/new-proddiecinueve',  async (req, res) => {
 
 
 
-router.get('/proddiecinueveredirect/:id', async (req, res) => {
+router.get('/blazeh-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
@@ -168,7 +168,7 @@ router.get('/proddiecinueveredirect/:id', async (req, res) => {
 //////////////////////////////////////////////////////////////////
 
 
-router.get('/proddiecinueveindex/:page', async (req, res) => {
+router.get('/blazeh/:page', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   let perPage = 15;
@@ -316,16 +316,24 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/proddiecinueve/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const proddiecinueve = await Proddiecinueve.findById(req.params.id);
+  res.render('proddiecinueve/tallecolor-proddiecinueve', { 
+    proddiecinueve,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+router.post('/proddiecinueve/tallecolor/:id',  async (req, res) => {
+
+  const { id } = req.params;
+  await Proddiecinueve.updateOne({_id: id}, req.body);
+  res.redirect('/blazeh-detalles/' + id);
+});
+
 
 
 
@@ -359,19 +367,31 @@ router.get('/proddiecinueve/delete/:id', async (req, res) => {
 
 
 
+ 
+
+
 router.get('/addtocardproddiecinueve/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Proddiecinueve.findById(productId, function(err, product){
+  Proddiecinueve.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/blazeh-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });

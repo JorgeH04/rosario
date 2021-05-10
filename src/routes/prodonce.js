@@ -332,7 +332,7 @@ router.post('/prodonce/tallecolor/:id',  async (req, res) => {
 
   const { id } = req.params;
   await Prodonce.updateOne({_id: id}, req.body);
-  res.redirect('/prodonceredirect/' + id);
+  res.redirect('/highstreet-detalles/' + id);
 });
 
 
