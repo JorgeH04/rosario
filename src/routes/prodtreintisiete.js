@@ -348,7 +348,7 @@ router.post('/prodtreintisiete/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/clubmaster-detalles/' + id);
+  res.redirect('/mujer-moda-redonda-detalles/' + id);
 });
 
 
@@ -370,7 +370,7 @@ router.get('/addtocardprodtreintisiete/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/clubmaster-detalles/' + productId);
+      res.redirect('/mujer-moda-redonda-detalles/' + productId);
    }
 
 

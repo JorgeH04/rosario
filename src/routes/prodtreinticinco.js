@@ -314,16 +314,20 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodtreinticinco/tallecolor/:id',  async (req, res) => {
+  const prodtreinticinco = await Prodtreinticinco.findById(req.params.id);
+  res.render('prodtreinticinco/tallecolor-prodtreinticinco', { prodtreinticinco });
+});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.post('/prodtreinticinco/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodtreinticinco.updateOne({_id: id}, req.body);
+   const task = await Prodtreinticinco.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/wingsh-detalles/' + id);
+});
 
 
 
@@ -356,20 +360,28 @@ router.get('/prodtreinticinco/delete/:id', async (req, res) => {
 
 
 
-
 router.get('/addtocardprodtreinticinco/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodtreinticinco.findById(productId, function(err, product){
+  Prodtreinticinco.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/wingsh-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });

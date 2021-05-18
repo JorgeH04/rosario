@@ -285,7 +285,11 @@ router.get('/prodtreinta/tallecolor/:id',  async (req, res) => {
 router.post('/prodtreinta/tallecolor/:id',  async (req, res) => {
   const { id } = req.params;
   await Prodtreinta.updateOne({_id: id}, req.body);
-  res.redirect('/prodtreintaredirect/' + id);
+   const task = await Prodtreinta.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/justinh-detalles/' + id);
 });
 
 
@@ -317,36 +321,31 @@ router.get('/prodtreinta/delete/:id', async (req, res) => {
 
 
 
-
+ 
 
 
 router.get('/addtocardprodtreinta/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+
   Prodtreinta.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/justinh-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });

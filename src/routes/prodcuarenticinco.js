@@ -328,16 +328,28 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodcuarenticinco/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+  const prodcuarenticinco = await Prodcuarenticinco.findById(req.params.id);
+  res.render('prodcuarenticinco/tallecolor-prodcuarenticinco', { 
+    prodcuarenticinco,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodcuarenticinco/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodcuarenticinco.updateOne({_id: id}, req.body);
+   const task = await Prodcuarenticinco.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/mujer-moda-rectangular-detalles/' + id);
+});
 
 
 
@@ -381,36 +393,32 @@ router.get('/prodseis/delete/:id', async (req, res) => {
 
 
 
-router.get('/addtocardprodseis/:id', function(req, res, next){
+router.get('/addtocardprodcuarentidos/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-  Prodseis.findById(productId,async function(err, product){
+
+  Prodcuarentidos.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/mujer-moda-rectangular-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });
+
 
 
 module.exports = router;

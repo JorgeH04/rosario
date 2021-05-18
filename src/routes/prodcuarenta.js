@@ -264,7 +264,10 @@ router.get('/prodcuarenta/edit/:id',  async (req, res) => {
 router.post('/prodcuarenta/edit/:id',  async (req, res) => {
   const { id } = req.params;
   await Prodcuarenta.updateOne({_id: id}, req.body);
-  res.redirect('/prodcuarentaback/1');
+   const task = await Prodcuarenta.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/mujer-clasico-redonda-detalles/1');
 });
 
 
@@ -347,7 +350,7 @@ router.post('/prodcuarenta/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/clubmaster-detalles/' + id);
+  res.redirect('/mujer-clasico-redonda-detalles/' + id);
 });
 
 
@@ -369,7 +372,7 @@ router.get('/addtocardprodcuarenta/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/clubmaster-detalles/' + productId);
+      res.redirect('/mujer-clasico-redonda-detalles/' + productId);
    }
 
 

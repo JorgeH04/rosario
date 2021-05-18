@@ -239,18 +239,6 @@ router.get('/prodcincuentitresback/:page', async (req, res) => {
 
 
 
-// talle y color
-router.get('/prodcincuentitres/tallecolor/:id',  async (req, res) => {
-  const prodcincuentitres = await Prodcincuentitres.findById(req.params.id);
-  res.render('prodcincuentitres/tallecolor-prodcincuentitres', { prodcincuentitres });
-});
-
-router.post('/prodcincuentitres/tallecolor/:id',  async (req, res) => {
-  const { id } = req.params;
-  await Prodcincuentitres.updateOne({_id: id}, req.body);
-  res.redirect('/prodcincuentitresredirect/' + id);
-});
-
 
 
 
@@ -348,7 +336,7 @@ router.post('/prodcincuentitres/tallecolor/:id',  async (req, res) => {
    task.status = !task.status;
    await task.save();
 
-  res.redirect('/clubmaster-detalles/' + id);
+  res.redirect('/hombre-moda-ovalada-detalles/' + id);
 });
 
 
@@ -370,7 +358,7 @@ router.get('/addtocardprodcincuentitres/:id', function(req, res, next){
       await product.save();
    }else{
       req.flash('success', 'Elija su color y talle primero');
-      res.redirect('/clubmaster-detalles/' + productId);
+      res.redirect('/hombre-moda-ovalada-detalles/' + productId);
    }
 
 

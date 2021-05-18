@@ -285,7 +285,10 @@ router.get('/prodcuarentiocho/tallecolor/:id',  async (req, res) => {
 router.post('/prodcuarentiocho/tallecolor/:id',  async (req, res) => {
   const { id } = req.params;
   await Prodcuarentiocho.updateOne({_id: id}, req.body);
-  res.redirect('/prodcuarentiochoredirect/' + id);
+   const task = await Prodcuarentiocho.findById(id);
+   task.status = !task.status;
+   await task.save();
+  res.redirect('/hombre-casual-rectangular-detalles/' + id);
 });
 
 
@@ -323,34 +326,27 @@ router.get('/prodcuarentiocho/delete/:id', async (req, res) => {
 router.get('/addtocardprodcuarentiocho/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
+
   Prodcuarentiocho.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/hombre-casual-rectangular-detalles/' + productId);
+   }
 
-
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
-    res.redirect('/shopcart');
+     res.redirect('/shopcart');
   });
 });
-
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Models
-const Prodquince = require('../models/prodquince');
+const Prodcuarenticuatro = require('../models/prodcuarenticuatro');
 const Cart = require('../models/cart');
 //const Order = require('../models/order');
 const Cartdolar = require('../models/cartdolar');
@@ -18,7 +18,7 @@ const { isAuthenticated } = require('../helpers/auth');
 /////////////////////////////////////////////////////////////////////7
 
 
-router.post('/prodquince/new-prodquince',  async (req, res) => {
+router.post('/prodcuarenticuatro/new-prodcuarenticuatro',  async (req, res) => {
   const { 
     name,
     title,
@@ -90,7 +90,7 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
       price
     });
   } else {
-    const newNote = new Prodquince({ 
+    const newNote = new Prodcuarenticuatro({ 
       name,
       title,
       image,
@@ -146,7 +146,7 @@ router.post('/prodquince/new-prodquince',  async (req, res) => {
     //newNote.user = req.user.id;
     await newNote.save();
     req.flash('success_msg', 'Note Added Successfully');
-    res.redirect('/prodquinceback/1');
+    res.redirect('/prodcuarenticuatroback/1');
   }
 });
 
@@ -160,9 +160,9 @@ router.get('/mujer-moda-ovalada-detalles/:id', async (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : 0);
 
   const { id } = req.params;
-  const prodquince = await Prodquince.findById(id);
-  res.render('prodquince/prodquinceredirect', {
-    prodquince,
+  const prodcuarenticuatro = await Prodcuarenticuatro.findById(id);
+  res.render('prodcuarenticuatro/prodcuarenticuatroredirect', {
+    prodcuarenticuatro,
     products: cart.generateArray(), totalPrice: cart.totalPrice
   });
 });
@@ -175,16 +175,16 @@ router.get('/mujer-moda-ovalada/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodquince
+  Prodcuarenticuatro
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodquince) => {
-    Prodquince.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcuarenticuatro) => {
+    Prodcuarenticuatro.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodquince/prodquince', {
-        prodquince,
+      res.render('prodcuarenticuatro/prodcuarenticuatro', {
+        prodcuarenticuatro,
         current: page,
         pages: Math.ceil(count / perPage),
         products: cart.generateArray(), totalPrice: cart.totalPrice
@@ -249,20 +249,20 @@ router.get("/search", function(req, res){
 
 
 
-router.get('/prodquinceback/:page', async (req, res) => {
+router.get('/prodcuarenticuatroback/:page', async (req, res) => {
   let perPage = 15;
   let page = req.params.page || 1;
 
-  Prodquince
+  Prodcuarenticuatro
   .find({}) // finding all documents
   .sort({ timestamp: -1 })
   .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
   .limit(perPage) // output just 9 items
-  .exec((err, prodquince) => {
-    Prodquince.countDocuments((err, count) => { // count to calculate the number of pages
+  .exec((err, prodcuarenticuatro) => {
+    Prodcuarenticuatro.countDocuments((err, count) => { // count to calculate the number of pages
       if (err) return next(err);
-      res.render('prodquince/new-prodquince', {
-        prodquince,
+      res.render('prodcuarenticuatro/new-prodcuarenticuatro', {
+        prodcuarenticuatro,
         current: page,
         pages: Math.ceil(count / perPage)
       });
@@ -317,50 +317,62 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.get('/prodcuarentidos/tallecolor/:id',  async (req, res) => {
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
+  const prodcuarentidos = await Prodcuarentidos.findById(req.params.id);
+  res.render('prodcuarentidos/tallecolor-prodcuarentidos', { 
+    prodcuarentidos,
+    products: cart.generateArray(), totalPrice: cart.totalPrice
+
+   });
+});
+
+
+
+router.post('/prodcuarentidos/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodcuarentidos.updateOne({_id: id}, req.body);
+   const task = await Prodcuarentidos.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/mujer-moda-ovalada-detalles/' + id);
+});
 
 
 
 //editar
  
 
-router.get('/prodquince/edit/:id',  async (req, res) => {
-  const prodquince = await Prodquince.findById(req.params.id);
-  res.render('prodquince/edit-prodquince', { prodquince });
+router.get('/prodcuarenticuatro/edit/:id',  async (req, res) => {
+  const prodcuarenticuatro = await Prodcuarenticuatro.findById(req.params.id);
+  res.render('prodcuarenticuatro/edit-prodcuarenticuatro', { prodcuarenticuatro });
 });
 
-router.post('/prodquince/edit/:id',  async (req, res) => {
+router.post('/prodcuarenticuatro/edit/:id',  async (req, res) => {
   const { id } = req.params;
-  await Prodquince.updateOne({_id: id}, req.body);
-  res.redirect('/prodquinceback/:1');
+  await Prodcuarenticuatro.updateOne({_id: id}, req.body);
+  res.redirect('/prodcuarenticuatroback/:1');
 });
 
 
 
 
 // Delete 
-router.get('/prodquince/delete/:id', async (req, res) => {
+router.get('/prodcuarenticuatro/delete/:id', async (req, res) => {
   const { id } = req.params;
-    await Prodquince.deleteOne({_id: id});
-  res.redirect('/prodquinceback/:1');
+    await Prodcuarenticuatro.deleteOne({_id: id});
+  res.redirect('/prodcuarenticuatroback/:1');
 });
 
 
 
-router.get('/likeprodquince/:id', async (req, res, next) => {
+router.get('/likeprodcuarenticuatro/:id', async (req, res, next) => {
   // let { id } = req.params;
   // const task = await Ofertauno.findById(id);
-  const task = await Prodquince.findById(req.params.id);
+  const task = await Prodcuarenticuatro.findById(req.params.id);
   task.like = !task.like;
   await task.save();
  // res.redirect('/pedidos/:1');
@@ -368,33 +380,28 @@ router.get('/likeprodquince/:id', async (req, res, next) => {
 });  
 
 
-router.get('/addtocardprodquince/:id', function(req, res, next){
+router.get('/addtocardprodcuarentidos/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-  var cartdolar = new Cartdolar(req.session.cartdolar ? req.session.cartdolar : {items: {}});
-  Prodquince.findById(productId,async function(err, product){
+
+  Prodcuarentidos.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
 
 
-  //  if(product.status == true) {
-      cartdolar.add(product, product.id);
+    if(product.status == true) {
+
       cart.add(product, product.id);
       req.session.cart = cart;
-      req.session.cartdolar = cartdolar;
-    //  product.status = !product.status;
-  //    await product.save();
-  // }else{
-    //  req.flash('success', 'Elija su color y talle primero');
-    //  res.redirect('/produnoredirect/' + productId);
-  // }
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/mujer-moda-ovalada-detalles/' + productId);
+   }
 
 
-    console.log(req.session.cart);
-    console.log(req.session.cartdolar);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/produnoredirect/' + productId);
     res.redirect('/shopcart');
   });
 });

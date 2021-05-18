@@ -314,16 +314,20 @@ router.get("/searchback", function(req, res){
 
 
 // // talle y color
-// router.get('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const prodtres = await Prodtres.findById(req.params.id);
-//   res.render('prodtres/tallecolor-prodtres', { prodtres });
-// });
+router.get('/prodtreintiuno/tallecolor/:id',  async (req, res) => {
+  const prodtreintiuno = await Prodtreintiuno.findById(req.params.id);
+  res.render('prodtreintiuno/tallecolor-prodtreintiuno', { prodtreintiuno });
+});
 
-// router.post('/prodtres/tallecolor/:id',  async (req, res) => {
-//   const { id } = req.params;
-//   await Prodtres.updateOne({_id: id}, req.body);
-//   res.redirect('/prodtresredirect/' + id);
-// });
+router.post('/prodtreintiuno/tallecolor/:id',  async (req, res) => {
+  const { id } = req.params;
+  await Prodtreintiuno.updateOne({_id: id}, req.body);
+   const task = await Prodtreintiuno.findById(id);
+   task.status = !task.status;
+   await task.save();
+
+  res.redirect('/olympian-detalles/' + id);
+});
 
 
 
@@ -356,23 +360,35 @@ router.get('/prodtreintiuno/delete/:id', async (req, res) => {
 
 
 
+ 
+
 
 router.get('/addtocardprodtreintiuno/:id', function(req, res, next){
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-  Prodtreintiuno.findById(productId, function(err, product){
+  Prodtreintiuno.findById(productId,async function(err, product){
     if(err){
       return res-redirect('/');
     }
-    cart.add(product, product.id);
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    req.flash('success', 'Producto agregado al carro exitosamente');
-    //res.redirect('/prodsieteredirect/' + productId);
+
+
+    if(product.status == true) {
+
+      cart.add(product, product.id);
+      req.session.cart = cart;
+      product.status = !product.status;
+      await product.save();
+   }else{
+      req.flash('success', 'Elija su color y talle primero');
+      res.redirect('/olympian-detalles/' + productId);
+   }
+
+
     res.redirect('/shopcart');
   });
 });
+
 
 
 
